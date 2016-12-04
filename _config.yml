@@ -1,0 +1,21 @@
+title:  'M0blabs'
+author: 'Kingm0b_'
+name:  'Mais um blogzinho'
+
+path: 'https://kingm0b.github.io'
+url:  'https://kingm0b.github.io/'
+
+markdown: kramdown
+
+sass:
+  sass_dir: css
+  style:    expanded
+
+permalink: /:title.html
+
+exclude:
+- README.md
+
+safe: true
+lsi: false
+

@@ -1,0 +1,20 @@
+---
+layout: default
+title: Posts
+---
+
+<h1>Posts</h1>
+
+{% for post in site.posts %}
+
+<div>
+  {{ post.date | date: "%b %-d, %Y" }}
+    »
+  <!--<span class='post-title'> !-->
+  <span class="post-list">
+    <a href="{{ site.path }}{{ post.url }}">{{ post.title }}</a>
+  </span>
+</div>
+
+{% endfor %}
+
