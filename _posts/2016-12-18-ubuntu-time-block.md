@@ -7,10 +7,9 @@ Objetivo: bloquear máquina da AGR ás 18:00. Para evitar supresas desagradávei
 
 Ferramentas utilizadas:
 
-    notify-send para alertar o usuário;
-    pam_time para bloqueio do usuário;
-    crond para executar os agendamentos necessários;
-
+* notify-send para alertar o usuário;
+* pam_time para bloqueio do usuário;
+* crond para executar os agendamentos necessários;
 
 Configurado seguintes agendamentos em /etc/crontab:
 
