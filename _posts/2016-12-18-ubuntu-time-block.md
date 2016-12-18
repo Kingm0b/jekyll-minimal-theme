@@ -3,7 +3,7 @@ layout: post
 title: "Bloqueando máquinas Ubuntu pelo horário"
 ---
 
-Objetivo: bloquear máquina da AGR ás 18:00. Para evitar supresas desagradáveis, alertar o usuário minutos antes do bloqueio da máquina.
+Objetivo: bloquear máquina de funcionário ás 18:00. Para evitar supresas desagradáveis, alertar o usuário minutos antes do bloqueio da máquina.
 
 Ferramentas utilizadas:
 
