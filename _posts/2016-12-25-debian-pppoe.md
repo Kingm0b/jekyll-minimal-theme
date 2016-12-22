@@ -13,7 +13,7 @@ Graças aos desenvolvedores do daemon **pppd**, os caras do "Roaring Penguin" co
 
 Então, em um *quick how-to* segue os procedimentos para configuração do PPPoE no Debian:
 
-1 - Instale o PPPoE:
+1 - Instale o pppd:
 
 ```bash
 # apt-get update
@@ -26,5 +26,7 @@ Observação: se o link ADSL que você está configurando for o seu link princip
 # apt-get install pppoeconf
 ```
 
-Este utilitário automatiza todo o processo de criação dos arquivos de configuração do pppd. Caso seu roteador Linux já esteja em produção e o link ADSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor ADSL (o que pode não ser uma boa).
+Este utilitário automatiza todo o processo de criação dos arquivos de configuração do pppd.
+
+Caso seu roteador Linux já esteja em produção e o link ADSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor ADSL (o que pode não ser uma boa).
 
