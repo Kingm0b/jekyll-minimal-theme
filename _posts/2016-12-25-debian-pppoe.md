@@ -9,7 +9,7 @@ De posse de um Opticom DSLink, desabilitei o Wifi junto com vários outros servi
 
 A minha missão era configurar um roteador/firewall rodando Debian 8 para "discar" e receber um endereço público do provedor.
 
-Graças aos desenvolvedores do daemon **pppd**, os caras do "Roaring Penguin" com seu **rp-pppoe.so** e os empacotadores do Debian, conexões PPPoE no Linux pode ser bastante simples ("pode" ser simples se as suas necessidades forem simples, dê (uma olhadinha na man page do pppd)[https://ppp.samba.org/pppd.html] ) se você quiser ver o que é flexibilidade.
+Graças aos desenvolvedores do daemon **pppd**, os caras do "Roaring Penguin" com seu **rp-pppoe.so** e os empacotadores do Debian, conexões PPPoE no Linux pode ser bastante simples ("pode" ser simples se as suas necessidades forem simples, dê [uma olhadinha na man page do pppd](https://ppp.samba.org/pppd.html) ) se você quiser ver o que é flexibilidade.
 
 Então, em um *quick how-to* segue os procedimentos para configuração do PPPoE no Debian:
 
