@@ -3,7 +3,7 @@ layout: post
 title: "Discagem PPPoE no Debian 8"
 ---
 
-> O PPPoE é ainda o protocolo mais utilizado pelos provedores (A|V)DSL. Aqui, documento algumas experiências básicas que vivenciei com este tipo de tecnologia.
+> O PPPoE é ainda o protocolo mais utilizado pelos provedores (A\|V)DSL. Aqui, documento algumas experiências básicas que vivenciei com este tipo de tecnologia.
 
 De posse de um Opticom DSLink, desabilitei o Wifi junto com vários outros serviços habilitados (UPnP, DHCP, Telnet e FTP). Em seguida, re-configurei as definições de conexão com a WAN, configurando o roteadorzinho SOHO a trabalhar como **bridge**.
 
