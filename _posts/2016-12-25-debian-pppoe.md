@@ -26,7 +26,7 @@ Observação: se o link ADSL que você está configurando for o seu link princip
 # apt-get install pppoeconf
 ```
 
-Este utilitário automatiza todo o processo de criação dos arquivos de configuração do pppd.
+Este utilitário, é um script em shell que, usando o *dialog*, automatiza todo o processo de criação dos arquivos de configuração do pppd.
 
 Caso seu roteador Linux já esteja em produção e o link DSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor DSL (o que pode não ser uma boa).
 
