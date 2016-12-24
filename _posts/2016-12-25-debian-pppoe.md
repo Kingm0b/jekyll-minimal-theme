@@ -3,7 +3,7 @@ layout: post
 title: "Conexão PPPoE no Debian 8"
 ---
 
-> O PPPoE é ainda o protocolo mais utilizado pelos provedores (A\|V)DSL. Aqui, documento algumas experiências básicas que vivenciei com este tipo de tecnologia.
+> O PPPoE é ainda o protocolo mais utilizado pelos provedores xDSL. Aqui, documento algumas experiências básicas que vivenciei com este tipo de tecnologia.
 
 De posse de um *Opticom DSLink*, desabilitei o Wifi junto com vários outros serviços habilitados (UPnP, DHCP, Telnet e FTP). Em seguida, re-configurei as definições de conexão com a WAN, configurando o roteadorzinho SOHO a trabalhar como **bridge**. A ideia de configurar o roteador como bridge é para permitir que o tráfego PPPoE gerado pela minha máquina consiga alcançar o PPPoE server do provedor.
 
@@ -107,6 +107,35 @@ Marque "**Não**" para podermos acrescentar algumas configurações no próximo 
 
 3 - 
 
+```
+# Habilita debug - output no syslog
+debug
+
+# Endereço IP e Rotas
+noipdefault
+nodefaultroute
+replacedefaultroute
+
+#lcp-echo-interval 30
+#lcp-echo-failure 4
+noauth
+mtu 1492
+
+# Tolerância a "falhas"
+persist
+maxfail 0
+holdoff 20
+
+plugin rp-pppoe.so eth0
+
+# Informações de autenticação
+hide-password
+user "usuario@provedor"
+```
+
+### Como se dá o *discover* de servidores PPPoE
+
+
 ### Como são distribuídos os IPs públicos por PPPoE
 
 Para a "configuração" do Internet Protocol (isto é, a distribuição dos endereços IPv4) sobre PPPoE, é utilizado um protocolo próprio chamado **IPCP** (*IP Control Protocol*, Protocolo de Controle do IP).
@@ -120,5 +149,10 @@ Para ilustrar melhor esse processo, veja essa captura no momento do recebimento 
 ![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/wireshark-ipcp.jpg)
 
 Neste caso, o roteador Cisco do provedor transmitiu para o cliente uma mensagem IPCP do tipo "*Configuration Nak*", no campo "*Options*" desta mensagem temos o IP concedido: 201.2.31.31. De posse deste endereço, cabe ao equipamento setar este IP á sua interface *ppp*.
+
+
+### Qual a relação entre PPPoE e redes ATM ?
+
+Se estou utilizando PPPoE, por que tenho que definir configurações de redes ATM no meu modem?
 
 EOF
