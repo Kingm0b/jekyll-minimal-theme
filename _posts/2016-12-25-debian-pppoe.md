@@ -30,3 +30,16 @@ Este utilitário automatiza todo o processo de criação dos arquivos de configu
 
 Caso seu roteador Linux já esteja em produção e o link ADSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor ADSL (o que pode não ser uma boa).
 
+2 - 
+
+
+### Como são distribuídos os IPs públicos por PPPoE
+
+Para a "configuração" do Internet Protocol (isto é, a distribuição dos endereços IPv4) sobre PPPoE, é utilizado um protocolo próprio chamado **IPCP** (*Internet Protocol Control Protocol*, Protocolo de Controle do Protocolo de Internet).
+
+Basicamente, o cliente envia uma "*Configuration Request*" e o servidor PPPoE do provedor responde com um "Configuration ACK" já com o novo IP público do cliente e endereço de servidores DNS.
+
+Em outras palavras, o uso do IPCP para concessão de endereços IP é uma espécie de DHCP a nível de enlace.
+
+Para ilustrar melhor esse processo, veja essa captura no momento do recebimento do endereço IP:
+
