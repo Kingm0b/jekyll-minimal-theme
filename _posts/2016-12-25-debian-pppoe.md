@@ -153,6 +153,6 @@ Neste caso, o roteador Cisco do provedor transmitiu para o cliente uma mensagem 
 
 ### Qual a relação entre PPPoE e redes ATM ?
 
-Se estou utilizando PPPoE, por que tenho que definir configurações de redes ATM no meu modem?
+Se estou utilizando PPPoE, por que tenho que definir configurações de redes ATM no meu modem (números de VCI e VPI) ?
 
 EOF
