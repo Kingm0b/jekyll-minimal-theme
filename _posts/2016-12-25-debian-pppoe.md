@@ -93,7 +93,18 @@ Apartir deste momento, uma tela em ncurses irá te guiar no processo de configur
 
 **Obs**: Se você omitir o nome da interface de rede, o pppoeconf irá tentar detectar a interface correta automaticamente. Se você tiver muitas interfaces, isso pode não ser uma boa (pois pode demorar muito e/ou ele pode ignorar a interface correta e te falar que não encontrou).
 
-No processo final, 
+Em uma das mensagens iniciais, você receberá este questionamento:
+
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/pppoeconf-1.png)
+
+Novamente, se o seu roteador Linux já estiver em produção e o link que você está configurando não for o princial, marque "**Não**".
+
+No questionamento final, você terá o seguinte:
+
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/pppoeconf-2.png)
+
+Marque "**Não**" para podermos acrescentar algumas configurações no próximo passo.
+
 
 
 ### Como são distribuídos os IPs públicos por PPPoE
