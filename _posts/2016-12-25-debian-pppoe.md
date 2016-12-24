@@ -133,10 +133,14 @@ hide-password
 user "usuario@provedor"
 ```
 
-### Como se dá o *discover* de servidores PPPoE
+### Esclarecimentos
+
+#### O login e senha do provedor é importante?
+
+#### Como se dá o *discover* de servidores PPPoE
 
 
-### Como são distribuídos os IPs públicos por PPPoE
+#### Como são distribuídos os IPs públicos por PPPoE
 
 Para a "configuração" do Internet Protocol (isto é, a distribuição dos endereços IPv4) sobre PPPoE, é utilizado um protocolo próprio chamado **IPCP** (*IP Control Protocol*, Protocolo de Controle do IP).
 
@@ -151,7 +155,7 @@ Para ilustrar melhor esse processo, veja essa captura no momento do recebimento 
 Neste caso, o roteador Cisco do provedor transmitiu para o cliente uma mensagem IPCP do tipo "*Configuration Nak*", no campo "*Options*" desta mensagem temos o IP concedido: 201.2.31.31. De posse deste endereço, cabe ao equipamento setar este IP á sua interface *ppp*.
 
 
-### Qual a relação entre PPPoE e redes ATM ?
+#### Qual a relação entre PPPoE e redes ATM ?
 
 Se estou utilizando PPPoE, por que tenho que definir configurações de redes ATM no meu modem (números de VCI e VPI) ?
 
