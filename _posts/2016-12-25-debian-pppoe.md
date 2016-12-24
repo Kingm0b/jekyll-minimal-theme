@@ -11,7 +11,15 @@ A minha missão era configurar um roteador/firewall rodando Debian 8 para autent
 
 Graças aos desenvolvedores do daemon **pppd**, os caras do "Roaring Penguin" com seu **rp-pppoe.so** e os empacotadores do Debian, conexões PPPoE no Linux pode ser bastante simples ("pode ser simples" se as suas necessidades forem simples, dê [uma olhadinha na man page do pppd](https://ppp.samba.org/pppd.html) se você quiser ver o que é flexibilidade rs).
 
-Então, em um *quick how-to* segue os procedimentos para configuração do PPPoE no Debian:
+Toda a configuração, *for the impatient*, se resume nestes passos:
+
+```bash
+# apt-get update
+# apt-get install -y ppp pppoeconf
+# pppoeconf
+```
+
+Em uma configuração mais detalhada, segue:
 
 1 - Instale o pppd:
 
