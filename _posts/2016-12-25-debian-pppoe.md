@@ -71,7 +71,7 @@ e *pap-secrets*:
 # cat /etc/ppp/pap-secrets
 ```
 
-O diretório *peers* contém praticamente todas as informações que o pppd precisa para estabelecer uma conexão PPP:
+O diretório *peers* contém praticamente todas as informações que o pppd precisa para estabelecer uma conexão:
 
 ```bash
 # ls -l /etc/ppp/peers/
@@ -105,7 +105,7 @@ No questionamento final, você terá o seguinte:
 
 Marque "**Não**" para podermos acrescentar algumas configurações no próximo passo.
 
-3 - 
+3 - Ajustando as configurações
 
 ```
 # Habilita debug - output no syslog
@@ -133,7 +133,12 @@ hide-password
 user "usuario@provedor"
 ```
 
+4 - Ativando o link
+
+
 ### Esclarecimentos
+
+#### Sobre a rota default
 
 #### O login e senha do provedor é importante?
 
