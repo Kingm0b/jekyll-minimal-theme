@@ -63,7 +63,7 @@ e *pap-secrets*:
 # cat /etc/ppp/pap-secrets
 ```
 
-O diretório *peers* contém praticamente todas as informações do pppd:
+O diretório *peers* contém praticamente todas as informações que o pppd precisa para estabelecer uma conexão PPP:
 
 ```bash
 # ls -l /etc/ppp/peers/
@@ -71,7 +71,7 @@ total 4
 -rw-r----- 1 root dip 1093 Dez 24 10:03 provider
 ```
 
-Por padrão, ele só contém o arquivo provider.
+Por padrão, ele só contém o arquivo *provider*, **ignore-o**.
 
 2 - Configure o pppd:
 
@@ -86,6 +86,7 @@ Apartir deste momento, uma tela em ncurses irá te guiar no processo de configur
 **Obs**: Se você omitir o nome da interface de rede, o pppoeconf irá tentar detectar a interface correta automaticamente. Se você tiver muitas interfaces, isso pode não ser uma boa (pois pode demorar muito e/ou ele pode ignorar a interface correta e te falar que não encontrou).
 
 No processo final, 
+
 
 ### Como são distribuídos os IPs públicos por PPPoE
 
