@@ -5,7 +5,7 @@ title: "Conexão PPPoE no Debian 8"
 
 > O PPPoE é ainda o protocolo mais utilizado pelos provedores (A\|V)DSL. Aqui, documento algumas experiências básicas que vivenciei com este tipo de tecnologia.
 
-De posse de um *Opticom DSLink*, desabilitei o Wifi junto com vários outros serviços habilitados (UPnP, DHCP, Telnet e FTP). Em seguida, re-configurei as definições de conexão com a WAN, configurando o roteadorzinho SOHO a trabalhar como **bridge**. A ideia de configurar o roteador como bridge é para permitir que o trágefo PPPoE gerado pela minha máquina consiga alcançar o PPPoE server do provedor.
+De posse de um *Opticom DSLink*, desabilitei o Wifi junto com vários outros serviços habilitados (UPnP, DHCP, Telnet e FTP). Em seguida, re-configurei as definições de conexão com a WAN, configurando o roteadorzinho SOHO a trabalhar como **bridge**. A ideia de configurar o roteador como bridge é para permitir que o tráfego PPPoE gerado pela minha máquina consiga alcançar o PPPoE server do provedor.
 
 A minha missão era configurar um roteador/firewall rodando Debian 8 para autenticar e receber um endereço público do provedor.
 
@@ -105,7 +105,7 @@ No questionamento final, você terá o seguinte:
 
 Marque "**Não**" para podermos acrescentar algumas configurações no próximo passo.
 
-
+3 - 
 
 ### Como são distribuídos os IPs públicos por PPPoE
 
@@ -117,3 +117,4 @@ Em outras palavras, o uso do IPCP para concessão de endereços IP é uma espéc
 
 Para ilustrar melhor esse processo, veja essa captura no momento do recebimento do endereço IP:
 
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/wireshark-ipcp.jpg)
