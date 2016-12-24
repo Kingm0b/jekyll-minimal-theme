@@ -118,3 +118,7 @@ Em outras palavras, o uso do IPCP para concessão de endereços IP é uma espéc
 Para ilustrar melhor esse processo, veja essa captura no momento do recebimento do endereço IP:
 
 ![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/wireshark-ipcp.jpg)
+
+Neste caso, o roteador Cisco do provedor transmitiu para o cliente uma mensagem IPCP do tipo "*Configuration Nak*", no campo "*Options*" desta mensagem temos o IP concedido: 201.2.31.31. De posse deste endereço, cabe ao equipamento setar este IP á sua interface *ppp*.
+
+EOF
