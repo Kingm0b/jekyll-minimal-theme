@@ -186,4 +186,6 @@ Se estou utilizando PPPoE, por que tenho que definir configurações de redes AT
 
 Por mais que o link entre o seu modem e o roteador do provedor seja Ethernet, o tráfego é ainda encapsulado em frames ATM para chegar aos equipamentos do provedor. Este tipo de gambiarra é chamado por *PPPoE ATM over ADSL*. E por mais estranho que possa parecer este arranjo, é a implementação mais utilizada pelos ISPs!
 
+Ou seja, todos os pacotes IP que partem da sua rede em direção à Internet, primeiro são encapsulados em frames PPP, em seguida são re-encaplusados em frames Ethernet e, por fim, recebem cabeçalhos ATM segundo o padrão AAL5.
+
 EOF
