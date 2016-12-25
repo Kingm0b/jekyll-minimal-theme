@@ -88,7 +88,7 @@ Utilizando o pppoeconf (tudo é mais fácil com ele), caso a interface de rede q
 # pppoeconf eth0
 ```
 
-Apartir deste momento, uma tela em ncurses irá te guiar no processo de configuração.
+A partir deste momento, uma tela em ncurses irá te guiar no processo de configuração.
 
 **Obs**: Se você omitir o nome da interface de rede, o pppoeconf irá tentar detectar a interface correta automaticamente. Se você tiver muitas interfaces, isso pode não ser uma boa (pois pode demorar muito e/ou ele pode ignorar a interface correta e te falar que não encontrou).
 
@@ -105,6 +105,19 @@ No questionamento final, você terá o seguinte:
 Marque "**Não**" para podermos acrescentar algumas configurações no próximo passo.
 
 #### 3 - Ajustando as configurações
+
+Observe novamente o conteúdo dos arquivos <code>/etc/ppp/chap-secrets</code> e <code>/etc/ppp/pap-secrets</code>. Não sabendo qual o protocolo de autenticação suportado pelo provedor, o pppoeconf definiu as credenciais fornecidas á ele nestes dois arquivos.
+
+Listando novamente o diretório *peers*, temos:
+
+```
+root@debian:~# ls -l /etc/ppp/peers/
+total 8
+-rw-r----- 1 root dip  258 Dez 24 13:03 dsl-provider
+-rw-r----- 1 root dip 1093 Dez 24 10:03 provider
+```
+
+Surgiu um novo arquivo: **dsl-provider**. Para agilizar, este é o conteúdo do meu dsl-provider:
 
 ```
 # Habilita debug - output no syslog
