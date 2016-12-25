@@ -27,19 +27,6 @@ Em uma configuração mais detalhada, segue:
 # apt-get update
 # apt-get install ppp
 ```
-
-Observação: se o link ADSL que você está configurando for o seu link principal, instale o utilitário pppoeconf:
-
-```bash
-# apt-get install pppoeconf
-```
-
-Este utilitário, é um script em shell que, usando o *dialog*, automatiza todo o processo de criação dos arquivos de configuração do pppd.
-
-Caso seu roteador Linux já esteja em produção e o link DSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor DSL (o que pode não ser uma boa).
-
-De qualquer forma, mesmo o link DSL não sendo o seu link de conexão principal com a Internet, você pode se beneficiar do **pppoeconf** apenas tomando muito cuidado nos procedimentos finais deste utilitário!
-
 Antes de partir para o próximo passo, vamos ver o estado em que se encontra aos arquivos e diretórios do ppp:
 
 ```bash
@@ -80,6 +67,18 @@ total 4
 ```
 
 Por padrão, ele só contém o arquivo *provider*, **ignore-o**.
+
+Instale o pppoeconf:
+
+```bash
+# apt-get install pppoeconf
+```
+
+Este utilitário é um script em shell que, usando o *dialog* como interface com o usuário, automatiza todo o processo de criação dos arquivos de configuração do pppd.
+
+Caso seu roteador Linux já esteja em produção e o link DSL que você está configurando **não** for o seu link default: CUIDADO! Se você afobar e confirmar todas as mensagens sem ler antes, o pppoeconf irá substituir a rota default do seu roteador pela rota default do provedor DSL (o que pode não ser uma boa).
+
+De qualquer forma, mesmo o link DSL não sendo o seu link de conexão principal com a Internet, você pode se beneficiar do **pppoeconf** apenas tomando muito cuidado nos procedimentos finais deste utilitário!
 
 #### 2 - Configure o pppd:
 
@@ -133,7 +132,13 @@ hide-password
 user "usuario@provedor"
 ```
 
-De longe, o protocolo LCP pode ser visto como uma espécie de "*ICMP do PPP*". Ou seja, ele tem a função de permitir que mensagens sejam trocadas entre os pares da comunicação.
+De longe, o protocolo LCP pode ser visto como uma espécie de "*ICMP do PPP*". Ou seja, ele tem a função de permitir que mensagens sejam trocadas entre os pares da comunicação. Ele coordena os três estágios da conexão:
+
+* 
+*
+*
+
+
 
 #### 4 - Ativando o link
 
