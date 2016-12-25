@@ -21,7 +21,7 @@ Toda a configuração, *for the impatient*, se resume nestes passos:
 
 Em uma configuração mais detalhada, segue:
 
-1 - Instale o pppd:
+#### 1 - Instale o pppd:
 
 ```bash
 # apt-get update
@@ -81,7 +81,7 @@ total 4
 
 Por padrão, ele só contém o arquivo *provider*, **ignore-o**.
 
-2 - Configure o pppd:
+#### 2 - Configure o pppd:
 
 Utilizando o pppoeconf (tudo é mais fácil com ele), caso a interface de rede que estiver diretamente conectada com o roteador DSL for a **eth0**, você pode executar o seguinte comando:
 
@@ -97,7 +97,7 @@ Em uma das mensagens iniciais, você receberá este questionamento:
 
 ![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2016-12-25/pppoeconf-1.png)
 
-Novamente, se o seu roteador Linux já estiver em produção e o link que você está configurando não for o princial, marque "**Não**".
+Novamente, se o seu roteador Linux já estiver em produção e o link que você está configurando não for o principal, marque "**Não**".
 
 No questionamento final, você terá o seguinte:
 
@@ -105,7 +105,7 @@ No questionamento final, você terá o seguinte:
 
 Marque "**Não**" para podermos acrescentar algumas configurações no próximo passo.
 
-3 - Ajustando as configurações
+#### 3 - Ajustando as configurações
 
 ```
 # Habilita debug - output no syslog
@@ -133,7 +133,9 @@ hide-password
 user "usuario@provedor"
 ```
 
-4 - Ativando o link
+De longe, o protocolo LCP pode ser visto como uma espécie de "*ICMP do PPP*". Ou seja, ele tem a função de permitir que mensagens sejam trocadas entre os pares da comunicação.
+
+#### 4 - Ativando o link
 
 
 ### Esclarecimentos
