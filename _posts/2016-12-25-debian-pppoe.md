@@ -191,21 +191,35 @@ iptables -t mangle -o "$PPP_IFACE" --insert FORWARD 1 -p tcp --tcp-flags SYN,RST
 
 #### O login e senha do provedor é importante?
 
-Na época em que as conexões dial-up dominavam, os **provedores de acesso** 
+Na época em que as conexões *dial-up* dominavam, os **provedores de acesso** eram de extrema importância, pois eles realmente proviam acesso a Internet. Por meio de uma placa fax-modem os computadores atuavam como verdadeiros telefones, discando para os RAS (atuando como ramais telefônicos) dos provedores e em seguida fornecendo informações para autenticação. Sem as crendenciais de login, o cliente não teria acesso a Internet.
+
+Nas conexões banda larga, o processo é totalmente diferente.
 
 Qual a necessidade de um provedor ADSL exigir autenticação PPP? Segurança? Controle?
 
-O conceito de "**provedor de internet**" sempre foi muito confuso para muitos. Afinal, se é a Oi, NET ou Vivo que disponibiliza acesso a Internet, por que pagar a *Uol* para isto?
+O conceito de "**provedor de internet**" sempre foi muito confuso para muitos. Afinal, se é a Oi, NET ou Vivo quem disponibiliza acesso a Internet, por que pagar a *Uol* para isto?
 
 A autenticação é uma funcionalidade **opcional** do PPP, provida pelo LCP.
 
-Se formos parar para observar, os provedores mantém um link dedicado entre as residências e seus roteadores/DSLAMs. Eles tem total controle sobre a disponibilização do sinal DSL e liberação do acesso a Internet.
+Se formos parar para observar, os provedores mantém um link **dedicado** entre as residências e seus roteadores/DSLAMs. Eles tem total controle sobre a disponibilização do sinal DSL e liberação do acesso a Internet.
 
 Se sua internet for cortada por falta de pagamento, não adianta pegar o login e senha PPP do vizinho e setar no seu modem. Não vai funcionar.
+
+A autenticação como justificativa dos provedores para identificação dos seus clientes, não procede, pois eles **já sabem que quem você é** (eles têm um link dedicado com você). Além disto, não é possível ter mais de um cliente PPP sobre o mesmo link (afinal, o link é **ponto-a-ponto**, só há dois *peers* na comunicação).
+
+Para continuar ganhando dinheiro, os provedores de acesso fizeram parcerias com os reais ISPs para portar o conceito de "provedor discado" ao mundo da banda larga.
 
 Durante mais de 10 anos os servidores PPP dos provedores terceirizavam a autenticação para servidores RADIUS. Estes servidores RADIUS validavam as credenciais fornecidas via PPP junto aos sistemas dos supostos "provedores de acesso".
 
 Realmente, se você não tivesse uma conta no Uol ou iG (por exemplo) você não conseguiria ter acesso a Internet.
+
+Hoje, isto é considerado venda casada! Você pode opcionalmente pagar por um "provedor". Mas se quiser, também pode utilizar de "*provedores gratuitos*" dependendo de quem está te fornecendo o acesso, como:
+
+* Login: oi@oi
+* Senha: oi
+
+* Login: turbonet@turbonet
+* Senha: gvt25
 
 #### Como se dá o *discover* de servidores PPPoE
 
