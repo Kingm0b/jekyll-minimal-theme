@@ -191,6 +191,22 @@ iptables -t mangle -o "$PPP_IFACE" --insert FORWARD 1 -p tcp --tcp-flags SYN,RST
 
 #### O login e senha do provedor é importante?
 
+Na época em que as conexões dial-up dominavam, os **provedores de acesso** 
+
+Qual a necessidade de um provedor ADSL exigir autenticação PPP? Segurança? Controle?
+
+O conceito de "**provedor de internet**" sempre foi muito confuso para muitos. Afinal, se é a Oi, NET ou Vivo que disponibiliza acesso a Internet, por que pagar a *Uol* para isto?
+
+A autenticação é uma funcionalidade **opcional** do PPP, provida pelo LCP.
+
+Se formos parar para observar, os provedores mantém um link dedicado entre as residências e seus roteadores/DSLAMs. Eles tem total controle sobre a disponibilização do sinal DSL e liberação do acesso a Internet.
+
+Se sua internet for cortada por falta de pagamento, não adianta pegar o login e senha PPP do vizinho e setar no seu modem. Não vai funcionar.
+
+Durante mais de 10 anos os servidores PPP dos provedores terceirizavam a autenticação para servidores RADIUS. Estes servidores RADIUS validavam as credenciais fornecidas via PPP junto aos sistemas dos supostos "provedores de acesso".
+
+Realmente, se você não tivesse uma conta no Uol ou iG (por exemplo) você não conseguiria ter acesso a Internet.
+
 #### Como se dá o *discover* de servidores PPPoE
 
 
