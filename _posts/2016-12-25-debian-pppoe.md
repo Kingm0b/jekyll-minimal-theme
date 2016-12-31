@@ -160,7 +160,7 @@ De longe, o protocolo LCP pode ser visto como uma espécie de "*ICMP do PPP*". O
 
 #### Sobre a rota default
 
-### Ajuste na MTU dos frames Ethernet
+#### Ajuste na MTU dos frames Ethernet
 
 Os frames Ethernet, ao todo, "pesam" no máximo 1518 bytes! Sendo 18 bytes de cabeçalho e 1500 bytes de payload.
 
@@ -168,7 +168,7 @@ Todos os pacotes transmitidos em uma rede PPPoE são primeiro encapsulados em fr
 
 Portanto, tamanho máximo do payload Ethernet = header PPP + pacote.
 
-Isto quer dizer que não podemos transmitir pacotes de 1500 bytes. Em razão do overhead gerado por causado do PPPoE, nossos pacotes deverão ter no máximo **1492 bytes** de tamanho (1500 de MTU - 8 do PPP).
+Isto quer dizer que não podemos transmitir pacotes de 1500 bytes. Em razão do overhead gerado por causa do PPPoE, nossos pacotes deverão ter no máximo **1492 bytes** de tamanho (1500 de MTU - 8 do PPP).
 
 Por conta disto, para evitar descarte dos pacotes no roteador, temos que **forçar** nossos segmentos TCP a sempre trabalharem com um MSS diferente do convencional (que é )
 
