@@ -166,11 +166,11 @@ Os frames Ethernet, ao todo, "pesam" no máximo 1518 bytes! Sendo 18 bytes de ca
 
 Todos os pacotes transmitidos em uma rede PPPoE são primeiro encapsulados em frames PPP. Cada frame possui 8 bytes de cabeçalho.
 
-Portanto, tamanho máximo do payload Ethernet = header PPP + pacote.
+Portanto, o tamanho máximo do payload Ethernet = header PPP + pacote.
 
 Isto quer dizer que não podemos transmitir pacotes de 1500 bytes. Em razão do overhead gerado por causa do PPPoE, nossos pacotes deverão ter no máximo **1492 bytes** de tamanho (1500 de MTU - 8 do PPP).
 
-Por conta disto, para evitar descarte dos pacotes no roteador, temos que **forçar** nossos segmentos TCP a sempre trabalharem com um MSS diferente do convencional (que é )
+Por conta disto, para evitar descarte dos pacotes no roteador, temos que **forçar** nossos segmentos TCP a sempre trabalharem com um MSS diferente do convencional (que é 1448 bytes), redefinindo o MSS para 1440 (8 bytes a menos).
 
 #### O login e senha do provedor é importante?
 
