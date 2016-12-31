@@ -172,6 +172,12 @@ Isto quer dizer que não podemos transmitir pacotes de 1500 bytes. Em razão do 
 
 Por conta disto, para evitar descarte dos pacotes no roteador, temos que **forçar** nossos segmentos TCP a sempre trabalharem com um MSS diferente do convencional (que é 1448 bytes), redefinindo o MSS para 1440 (8 bytes a menos).
 
+Mas aí você poderia se perguntar: e o UDP? Ele não tem campo ou extensão em seu cabeçalho que defina um tamanho máximo para que se adeque a rede em questão. Isso quer dizer que perderei datagramas UDP em uma possível comunicação com a Internet?
+
+Sim! Seu pacotes serão descartados pelo roteador se possuírem tamanho igual ou superior a 1441 bytes.
+
+Mas felizmente, **por convenção** (não há uma limitação técnica que defina isto, tipo número de bits), em razão de sua natureza *connectionless*, o tamanho máximo do payload considerado seguro de datagramas UDP não ultrapassam *508 bytes*.
+
 #### O login e senha do provedor é importante?
 
 #### Como se dá o *discover* de servidores PPPoE
