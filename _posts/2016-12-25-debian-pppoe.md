@@ -205,7 +205,7 @@ Se formos parar para observar, os provedores mantém um link **dedicado** entre 
 
 Se sua internet for cortada por falta de pagamento, não adianta pegar o login e senha PPP do vizinho e setar no seu modem. Não vai funcionar.
 
-A autenticação como justificativa dos provedores para identificação dos seus clientes, não procede, pois eles **já sabem que quem você é** (eles têm um link dedicado com você). Além disto, não é possível ter mais de um cliente PPP sobre o mesmo link (afinal, o link é **ponto-a-ponto**, só há dois *peers* na comunicação).
+A autenticação como justificativa dos provedores para identificação dos seus clientes, não procede, pois eles **já sabem quem você é** (eles têm um link dedicado com você). Além disto, não é possível ter mais de um cliente PPP sobre o mesmo link (afinal, o link é **ponto-a-ponto**, só há dois *peers* na comunicação).
 
 Para continuar ganhando dinheiro, os provedores de acesso fizeram parcerias com os reais ISPs para portar o conceito de "provedor discado" ao mundo da banda larga.
 
