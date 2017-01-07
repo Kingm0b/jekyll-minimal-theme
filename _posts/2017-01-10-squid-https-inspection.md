@@ -5,6 +5,8 @@ title: "Interceptando tráfego HTTPS com o Squid"
 
 > Vamos discutir a problemática do Squid-in-the-middle em tráfego TLS
 
+O TLS é um protocolo de segurança que garante o sigilo da comunição entre clientes e servidores. Nem preciso citar alguma estatística da *Netcraft*, *SANS Institute* ou algo do tipo para dizer que atualmente uma porcentagem muito alta do tráfego de máquinas clientes fazem uso de algum protocolo de aplicação *over TLS* (como é o caso do **HTTPS**). Se você administra algum web proxy ou firewall, faça o teste: verifique quantas conexões HTTPS estão passando por seus equipamentos e compare com o número de conexões HTTP.
+
 O Squid (em suas versões atuais) consegue fazer a interceptação de tráfego HTTPS de duas maneiras diferentes: ativa e passiva (até a versão 3.4, somente **ativa**).
 
 A interceptação passiva passou a ser possível a partir da versão **3.5** com a entrada de uma nova feature chamada "*SslBump Peek and Splice*".
