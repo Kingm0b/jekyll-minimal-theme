@@ -189,6 +189,8 @@ O ajuste do MSS no TCP é feito por meio do módulo **tcpmss** do iptables/netfi
 iptables -t mangle -o "$PPP_IFACE" --insert FORWARD 1 -p tcp --tcp-flags SYN,RST SYN -m tcpmss --mss 1400:65495 -j TCPMSS --clamp-mss-to-pmtu
 ```
 
+Esta regra é aplicada na chain FORWARD referenciando a tabela mangle (ou seja, tende a ser a primeira regra a ser processada no ato do roteamento).
+
 #### O login e senha do provedor é importante?
 
 Na época em que as conexões *dial-up* dominavam, os **provedores de acesso** eram de extrema importância, pois eles realmente proviam acesso a Internet. Por meio de uma placa fax-modem os computadores atuavam como verdadeiros telefones, discando para os RAS (atuando como ramais telefônicos) dos provedores e em seguida fornecendo informações para autenticação. Sem as crendenciais de login, o cliente não teria acesso a Internet.
