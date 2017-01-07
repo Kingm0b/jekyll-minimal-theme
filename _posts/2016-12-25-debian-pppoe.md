@@ -174,7 +174,7 @@ Por conta disto, para evitar descarte dos pacotes no roteador, temos que **forç
 
 Mas aí você poderia se perguntar: e o UDP? Ele não tem campo ou extensão em seu cabeçalho que defina um tamanho máximo para que se adeque a rede em questão. Isso quer dizer que perderei datagramas UDP em uma possível comunicação com a Internet?
 
-Sim! Seu pacotes serão descartados pelo roteador se possuírem tamanho igual ou superior a 1441 bytes.
+Sim! Seus pacotes serão descartados pelo roteador se possuírem tamanho igual ou superior a 1441 bytes.
 
 Mas felizmente, **por convenção** (não há uma limitação técnica que defina isto, tipo número de bits), em razão de sua natureza *connectionless*, o tamanho máximo do payload considerado seguro de datagramas UDP não ultrapassam *512 bytes*.
 
