@@ -23,6 +23,77 @@ Quando configurado para trabalhar no modo "**splice**", o Squid reconstrói o tr
 
 Desta forma, passivamente, o Squid consegue aplicar ACLs como **dst** e **dstdomain** de forma transparente em tráfego TLS.
 
+A versão 3.5 do Squid ainda não se encontra nos repositórios stable do Debian. Portanto, teremos que compilá-lo.
+
+```bash
+# apt-get install pkg-config gcc g++ make autoconf libtool build-essential
+# wget http://www.squid-cache.org/Versions/v3/3.5/squid-3.5.20.tar.gz
+# tar -zxvf squid-3.5.20.tar.gz
+# cd squid-3.5.20
+
+./configure \
+--disable-maintainer-mode \
+--disable-silent-rules \
+--disable-snmp \
+--disable-htcp \
+--disable-wccp \
+--disable-wccpv2 \
+--disable-auth-basic \
+--disable-auth-digest \
+--disable-auth-negotiate \
+--disable-auth-ntlm \
+--disable-unlinkd \
+--enable-ssl-crtd \
+--enable-delay-pools \
+--enable-icmp \
+--enable-follow-x-forwarded-for \
+--with-large-files \
+--enable-build-info="M0blabs" \
+--with-default-user=proxy \
+--mandir=/usr/share/man \
+--sysconfdir=/etc/squid3 \
+--datadir=/usr/share/squid3 \
+--prefix=/usr \
+--with-openssl
+
+
+# make all
+# make install
+# make install-pinger
+# mkdir /var/log/squid3/
+# chown -R proxy.proxy /var/log/squid3/
+# /usr/libexec/ssl_crtd -c -s /var/log/squid3/ssl_db
+```
+
+Regras de DNAT
+
+```
+# iptables -t nat -A PREROUTING ! -d 192.168.1.121 -p tcp --dport 80 -j REDIRECT --to-ports 80
+# iptables -t nat -A PREROUTING ! -d 192.168.1.121 -p tcp --dport 443 -j REDIRECT --to-ports 443
+```
+
+**squid.conf**
+
+```
+http_port 80 intercept
+https_port 443 intercept
+ssl-bump cert=/etc/squid3/ssl/ca/intermediate/certs/wilcard.pem key=/etc/squid3/ssl/ca/intermediate/private/wildcard.key generate-host-certificates=off version=4 options=NO_SSLv2,NO_SSLv3,SINGLE_DH_USE
+cache_log /var/log/squid3/cache.log
+access_log daemon:/var/log/squid3/access.log squid
+netdb_filename stdio:/var/log/squid3/netdb.state
+sslcrtd_program /usr/libexec/ssl_crtd -s /var/log/squid3/ssl_db -M 4MB sslcrtd_children 1 startup=1 idle=1
+cache_effective_user proxy
+cache_effective_group proxy
+pinger_enable off
+dns_v4_first on
+acl HTTPS dstdomain "/etc/squid3/https"
+acl BLOCK url_regex "(torrent)|sex(y|o)"
+cache deny all
+ssl_bump bump HTTPS
+ssl_bump splice all
+http_access deny BLOCK
+http_access allow all
+```
 Mas o que realmente queremos é fazer man-in-the-middle em tráfego HTTPS, fazendo cache e aplicando ACLs como url_regex, sem precisar instalar cadeias de certificados em todas as máquinas clientes, certo?
 
 Para o "bumping" de HTTPS, o Squid dispõe de duas maneiras diferentes de se lidar com certificados digitais:
