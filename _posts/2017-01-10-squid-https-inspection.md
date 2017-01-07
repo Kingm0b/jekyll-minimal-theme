@@ -7,6 +7,12 @@ title: "Interceptando tráfego HTTPS com o Squid"
 
 O TLS é um protocolo de segurança que garante o sigilo da comunição entre clientes e servidores. Nem preciso citar alguma estatística da *Netcraft*, *SANS Institute* ou algo do tipo para dizer que atualmente uma porcentagem muito alta do tráfego de máquinas clientes fazem uso de algum protocolo de aplicação *over TLS* (como é o caso do **HTTPS**). Se você administra algum web proxy ou firewall, faça o teste: verifique quantas conexões HTTPS estão passando por seus equipamentos e compare com o número de conexões HTTP.
 
+Movimentos como o "[Encrypt All The Things](https://encryptallthethings.net/)", Let's Encrypt, e as ações da Google (como melhor rankeamento para páginas em https e alerta do Chrome quando o site é em HTTP) estão colaborando para o aumento de páginas em HTTPS.
+
+Diante deste cenário, administradores de rede estão ficando muito preocupados. Afinal, cada vez mais está ficando difícil aplicar ACLs como url_regex e filtros de conteúdo como o Dansguardian.
+
+Para redes que necessitam do uso de Proxy Transparente o problema é maior ainda. Já que passivamente o Squid (até a versão 3.4) não conseguia trabalhar com HTTPS nesta modalidade.
+
 O Squid (em suas versões atuais) consegue fazer a interceptação de tráfego HTTPS de duas maneiras diferentes: ativa e passiva (até a versão 3.4, somente **ativa**).
 
 A interceptação passiva passou a ser possível a partir da versão **3.5** com a entrada de uma nova feature chamada "*SslBump Peek and Splice*".
