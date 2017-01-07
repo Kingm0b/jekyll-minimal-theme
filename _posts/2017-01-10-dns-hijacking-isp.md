@@ -3,7 +3,7 @@ layout: post
 title: "\"Hijacking\" de DNS dos provedores"
 ---
 
-> Vamos discutir a problemática do Squid-in-the-middle em tráfego TLS
+> OS PROVEDORES ESTÃO NOS ESPIONANDO! Salvem-se quem puder!
 
 Baseado nesta notícia:
 
