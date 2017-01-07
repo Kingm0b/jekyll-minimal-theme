@@ -7,7 +7,7 @@ title: "Interceptando tráfego HTTPS com o Squid"
 
 O TLS é um protocolo de segurança que garante o sigilo da comunição entre clientes e servidores. Nem preciso citar alguma estatística da *Netcraft*, *SANS Institute* ou algo do tipo para dizer que atualmente uma porcentagem muito alta do tráfego de máquinas clientes fazem uso de algum protocolo de aplicação *over TLS* (como é o caso do **HTTPS**). Se você administra algum web proxy ou firewall, faça o teste: verifique quantas conexões HTTPS estão passando por seus equipamentos e compare com o número de conexões HTTP.
 
-Movimentos como o "[Encrypt All The Things](https://encryptallthethings.net/)", Let's Encrypt, e as ações da Google (como melhor rankeamento para páginas em https e alerta do Chrome quando o site é em HTTP) estão colaborando para o aumento de páginas em HTTPS.
+Movimentos como o [Encrypt All The Things](https://encryptallthethings.net/), Let's Encrypt, e as ações da Google (como melhor rankeamento para páginas em https e alerta do Chrome quando o site é em HTTP) estão colaborando para o aumento de páginas em HTTPS.
 
 Diante deste cenário, administradores de rede estão ficando muito preocupados. Afinal, cada vez mais está ficando difícil  fazer cache, aplicar ACLs como **url_regex** e usar filtros de conteúdo como o Dansguardian. Vi casos de administradores que estão deixando de usar proxy por este motivo.
 
