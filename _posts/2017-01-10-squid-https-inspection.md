@@ -9,7 +9,7 @@ O TLS é um protocolo de segurança que garante o sigilo da comunição entre cl
 
 Movimentos como o "[Encrypt All The Things](https://encryptallthethings.net/)", Let's Encrypt, e as ações da Google (como melhor rankeamento para páginas em https e alerta do Chrome quando o site é em HTTP) estão colaborando para o aumento de páginas em HTTPS.
 
-Diante deste cenário, administradores de rede estão ficando muito preocupados. Afinal, cada vez mais está ficando difícil aplicar ACLs como url_regex e filtros de conteúdo como o Dansguardian.
+Diante deste cenário, administradores de rede estão ficando muito preocupados. Afinal, cada vez mais está ficando difícil  fazer cache, aplicar ACLs como **url_regex** e usar filtros de conteúdo como o Dansguardian. Vi casos de administradores que estão deixando de usar proxy por este motivo.
 
 Para redes que necessitam do uso de Proxy Transparente o problema é maior ainda. Já que passivamente o Squid (até a versão 3.4) não conseguia trabalhar com HTTPS nesta modalidade.
 
