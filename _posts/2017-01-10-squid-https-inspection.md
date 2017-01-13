@@ -5,7 +5,7 @@ title: "Interceptando tráfego HTTPS com o Squid"
 
 > Vamos discutir a problemática do Squid-in-the-middle em tráfego TLS
 
-O TLS é um protocolo de segurança que garante o sigilo da comunição entre clientes e servidores. Nem preciso citar alguma estatística da *Netcraft*, *SANS Institute* ou algo do tipo para dizer que atualmente uma porcentagem muito alta do tráfego de máquinas clientes fazem uso de algum protocolo de aplicação *over TLS* (como é o caso do **HTTPS**). Se você administra algum web proxy ou firewall, faça o teste: verifique quantas conexões HTTPS estão passando por seus equipamentos e compare com o número de conexões HTTP.
+O TLS é um protocolo de segurança que garante o sigilo da comunicação entre clientes e servidores. Nem preciso citar alguma estatística da *Netcraft*, *SANS Institute* ou algo do tipo para dizer que atualmente uma porcentagem muito alta do tráfego de máquinas clientes fazem uso de algum protocolo de aplicação *over TLS* (como é o caso do **HTTPS**). Se você administra algum web proxy ou firewall, faça o teste: verifique quantas conexões HTTPS estão passando por seus equipamentos e compare com o número de conexões HTTP.
 
 Movimentos como o [Encrypt All The Things](https://encryptallthethings.net/), Let's Encrypt, e as ações da Google (como melhor rankeamento para páginas em https e alerta do Chrome quando o site é em HTTP) estão colaborando para o aumento de páginas em HTTPS.
 
@@ -30,8 +30,7 @@ A versão 3.5 do Squid ainda não se encontra nos repositórios stable do Debian
 # wget http://www.squid-cache.org/Versions/v3/3.5/squid-3.5.20.tar.gz
 # tar -zxvf squid-3.5.20.tar.gz
 # cd squid-3.5.20
-
-./configure \
+# ./configure \
 --disable-maintainer-mode \
 --disable-silent-rules \
 --disable-snmp \
@@ -103,7 +102,7 @@ Para o "bumping" de HTTPS, o Squid dispõe de duas maneiras diferentes de se lid
 
 Podemos descartar o primeiro cenário, pois esta exige a instalação de um certificado na máquina cliente.
 
-Nos meus laboratórios, foquei no segundo caso. A princípio a solução seria solicitar um certificado á GlobalSign, utilizando como subdomínio wildcards de TLD (exemplo: *.br, *.com, *.net no campo subjAltName do certificado). Mas isso vai contra as definições da RFC 6125. Os navegadores simplesmente impedem o acesso a sites com wildcards inválidos.
+Nos meus laboratórios, foquei no segundo caso. A princípio a solução seria solicitar um certificado á GlobalSign, utilizando como subdomínio wildcards de *gTLD* (exemplo: *.br, *.com, *.net no campo subjAltName do certificado). Mas isso vai contra as definições da RFC 6125. Os navegadores simplesmente impedem o acesso a sites com wildcards inválidos.
 
 A única solução seria a emissão de um certificado multidomínio contendo o endereço de todos os sites que vocês queiram monitorar (exemplo: *.google.com, *.google.com.br, *.facebook.com, e etc, todos no mesmo certificado).
 
