@@ -208,6 +208,8 @@ No shell, mandei um ping para induzir a glibc a fazer a consulta DNS:
 $ ping -c1 www.google.com
 ```
 
+Ao invés do ping, eu poderia ter usado o dig. Mas por padrão ele seta o campo "*Additional RRs*" na query, ao contrário da glibc.
+
 Em paralelo, capturei a query DNS com o Wireshark. Copiei a query em "Offset Hex":
 
 ```
@@ -217,7 +219,9 @@ Em paralelo, capturei a query DNS com o Wireshark. Copiei a query em "Offset Hex
 
 Em um editor de texto, deixei em uma linha só:
 
+```
 " 0e 43 01 00 00 01 00 00 00 00 00 00 03 77 77 77 06 67 6f 6f 67 6c 65 03 63 6f 6d 00 00 01 00 01"
+```
 
 E no shell, adicionei caracteres de escape para indicar os bytes como hexadecimais:
 
