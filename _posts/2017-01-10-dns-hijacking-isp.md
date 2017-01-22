@@ -227,6 +227,7 @@ E no shell, adicionei caracteres de escape para indicar os bytes como hexadecima
 
 ```
 $ echo " 0e 43 01 00 00 01 00 00 00 00 00 00 03 77 77 77 06 67 6f 6f 67 6c 65 03 63 6f 6d 00 00 01 00 01" | sed 's; ;\\x;g'
+
 \x0e\x43\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\x77\x77\x77\x06\x67\x6f\x6f\x67\x6c\x65\x03\x63\x6f\x6d\x00\x00\x01\x00\x01
 ```
 
@@ -248,8 +249,6 @@ E executamos a consulta:
 ```
 $ sudo hping3 -n --traceroute --udp --destport 53 --file /tmp/dns_query --data 32 8.8.8.8
 HPING 8.8.8.8 (enp2s0 8.8.8.8): udp mode set, 28 headers + 32 data bytes
-[main] memlockall(): Operation not supported
-Warning: can't disable memory paging!
 hop=1 TTL 0 during transit from ip=192.168.1.1
 hop=1 hoprtt=2.9 ms
 hop=2 TTL 0 during transit from ip=191.223.6.1
@@ -287,7 +286,7 @@ Podemos concluir que, baseado na nossa origem, **a própria Google nos força a 
 
 Isso acontece porque a Google tem um programa chamado "*Google Global Cache*":
 
-(https://isp.google.com/iwantggc/)[https://isp.google.com/iwantggc/]
+[https://isp.google.com/iwantggc/](https://isp.google.com/iwantggc/)
 
 Com este programa, o ISP terceiriza alguns de seus servidores para que ela os utilize como **CDN**. Boa parte dos maiores ISPs do mundo estão fazendo uso desta solução.
 
