@@ -283,7 +283,23 @@ Se vocês sniffarem o tráfego, verão uma série de consultas DNS sendo lançad
 
 Mesmo assim, observe no hop 7 que os pacotes alcançaram a infra da Google.
 
+Podemos concluir que, baseado na nossa origem, **a própria Google nos força a utilizar servidores espelhados na infra dos nossos provedores**!
 
+Isso acontece porque a Google tem um programa chamado "*Google Global Cache*":
+
+!(https://isp.google.com/iwantggc/)[https://isp.google.com/iwantggc/]
+
+Com este programa, o ISP terceiriza alguns de seus servidores para que ela os utilize como **CDN**. Boa parte dos maiores ISPs do mundo estão fazendo uso desta solução.
+
+A grande vantagem disto é alivar a carga dos servidores da Google, diminiur o uso de banda internacional e aumentar o tempo de resposta (o que neste último, ás vezes não acontece).
+
+Exemplo da Brasil Telecom (agora Oi):
+
+[https://189.73.192.227](https://189.73.192.227)
+
+A Cloudflare possui uma solução parecida com relação a respostas de DNS baseadas no IP de origem do solicitante.
+
+Ok, por mais que ocorra em parceria com a Google.
 
 Baseado nesta notícia:
 
