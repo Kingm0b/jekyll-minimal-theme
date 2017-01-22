@@ -124,7 +124,11 @@ $ dig a www.google.com @8.8.8.8 +short
 201.34.205.121
 ```
 
-OS MESMOS ENDEREÇOS !!! SERÁ QUE ESTAMOS SOFRENDO ATAQUES DE HIJACKING DNS PELOS NOSSOS PRÓPRIOS PROVEDORES ? Seria um acordo entre os provedores e o Governo Federal para nos espionarem?
+OS MESMOS ENDEREÇOS !!!
+
+SERÁ QUE ESTAMOS SOFRENDO ATAQUES DE **HIJACKING DNS** PELOS NOSSOS PRÓPRIOS PROVEDORES ?
+
+Seria um acordo entre os provedores e o Governo Federal para nos espionarem?
 
 Bem, durante um tempo esta foi a minha desconfiança.
 
