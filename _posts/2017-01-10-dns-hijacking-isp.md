@@ -290,7 +290,7 @@ Isso acontece porque a Google tem um programa chamado "*Google Global Cache*":
 
 Com este programa, o ISP terceiriza alguns de seus servidores para que ela os utilize como **CDN**. Boa parte dos maiores ISPs do mundo estão fazendo uso desta solução.
 
-A grande vantagem disto é alivar a carga dos servidores da Google, diminiur o uso de banda internacional e aumentar o tempo de resposta (o que neste último, ás vezes não acontece).
+A grande vantagem disto é alivar a carga dos servidores da Google, diminuir o uso de banda internacional e aumentar o tempo de resposta (o que neste último, ás vezes não acontece).
 
 Exemplo da Brasil Telecom (agora Oi):
 
