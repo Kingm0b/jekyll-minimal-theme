@@ -287,7 +287,7 @@ Podemos concluir que, baseado na nossa origem, **a própria Google nos força a 
 
 Isso acontece porque a Google tem um programa chamado "*Google Global Cache*":
 
-!(https://isp.google.com/iwantggc/)[https://isp.google.com/iwantggc/]
+(https://isp.google.com/iwantggc/)[https://isp.google.com/iwantggc/]
 
 Com este programa, o ISP terceiriza alguns de seus servidores para que ela os utilize como **CDN**. Boa parte dos maiores ISPs do mundo estão fazendo uso desta solução.
 
