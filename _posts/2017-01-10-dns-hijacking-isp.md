@@ -196,7 +196,7 @@ round-trip min/avg/max = 3.1/51.9/109.3 ms
 
 Mesmo assim, vimos que o tráfego ainda está saindo dos domínios do provedor.
 
-Humm... talvez o critério do hijacking deles seja desviar a rota somente de datagramas **UDP** com porta de destino **53** e contendo uma query DNS para resolução algum nome de domínio da Google.
+Humm... talvez o critério do hijacking deles seja desviar a rota somente de datagramas **UDP** com porta de destino **53** e contendo uma query DNS para resolução de algum nome de domínio da Google.
 
 Certo, então vamos ver no que dá.
 
