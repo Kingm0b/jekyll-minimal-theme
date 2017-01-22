@@ -200,7 +200,7 @@ Humm... talvez o critério do hijacking deles seja desviar a rota somente de dat
 
 Certo, então vamos ver no que dá.
 
-Vamos captura uma query dns para resolução do fqdn "www.google.com" e usar a query capturada como payload para nosso traceroute (loko, né?).
+Vamos capturar uma query dns para resolução do fqdn "www.google.com" e usar a query capturada como payload para nosso traceroute (loko, né?).
 
 No shell, mandei um ping para induzir a glibc a fazer a consulta DNS:
 
