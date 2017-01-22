@@ -3,7 +3,7 @@ layout: post
 title: "Hijacking de DNS dos provedores"
 ---
 
-> OS PROVEDORES ESTÃO NOS ESPIONANDO?
+> Os provedores estão nos espionando?
 
 Se você é cliente da Oi, Vivo/GVT/Telefônica, NET, G8, ALGAR ou Claro, faça o teste:
 
