@@ -3,7 +3,114 @@ layout: post
 title: "\"Hijacking\" de DNS dos provedores"
 ---
 
-> OS PROVEDORES ESTÃO NOS ESPIONANDO! Salvem-se quem puder!
+> OS PROVEDORES ESTÃO NOS ESPIONANDO! 
+
+Se você é cliente da Oi, Vivo/GVT/Telefônica, NET, G8, ALGAR ou Claro, faça o teste:
+
+Consulte o servidor DNS do seu provedor para a resolução de nomes do Google:
+
+```
+$ dig a www.google.com +short
+201.34.205.101
+201.34.205.99
+201.34.205.113
+201.34.205.88
+201.34.205.112
+201.34.205.123
+201.34.205.110
+201.34.205.91
+201.34.205.121
+201.34.205.117
+201.34.205.90
+201.34.205.102
+201.34.205.80
+201.34.205.84
+201.34.205.95
+201.34.205.106
+```
+
+*(Ou simplesmente mande um ping para obter o IP de www.google.com.br)*
+
+Até aí tudo bem! Agora, vamos fazer uma resolução reversa de algum destes endereços IP do "Google":
+
+```
+$ dig -x 201.34.205.117 +short
+201-34-205-117.pvoce300.ipd.brasiltelecom.net.br.
+```
+
+Hã?! Ok, vamos ver a geolocalização deste endereço:
+
+```
+$ geoiplookup 201.34.205.117
+GeoIP Country Edition: BR, Brazil
+```
+
+**Brazil** ? Vamos ver o que a base whois da AS tem para nos dizer:
+
+```
+$ whois 201.34.205.117
+
+inetnum:     201.34.0.0/16
+aut-num:     AS8167
+abuse-c:     CSIOI
+owner:       Brasil Telecom S/A - Filial Distrito Federal
+ownerid:     76.535.764/0326-90
+responsible: Brasil Telecom S. A. - CNBRT
+country:     BR
+owner-c:     BTC14
+tech-c:      BTC14
+inetrev:     201.34.205.0/24
+nserver:     ns03-cta.brasiltelecom.net.br
+nsstat:      20170122 AA
+nslastaa:    20170122
+nserver:     ns04-bsa.brasiltelecom.net.br
+nsstat:      20170122 AA
+nslastaa:    20170122
+created:     20050511
+changed:     20050511
+
+nic-hdl-br:  BTC14
+person:      Brasil Telecom S. A. - CNRS
+e-mail:      ld-numeracaoip@oi.net.br
+country:     BR
+created:     20031003
+changed:     20170106
+
+nic-hdl-br:  CSIOI
+person:      CSIRT OI
+e-mail:      abuse@oi.net.br
+country:     BR
+created:     20140127
+changed:     20140127
+```
+
+Como assim? A Oi está direcionando o acesso a serviços do Google para servidores dela?
+
+Vamos fazer mais um teste. Vamos consultar diretamente o servidor DNS da Google e ver o que ele tem para nos dizer:
+
+```
+$ dig a www.google.com @8.8.8.8 +short
+201.34.205.110
+201.34.205.95
+201.34.205.123
+201.34.205.90
+201.34.205.113
+201.34.205.88
+201.34.205.80
+201.34.205.102
+201.34.205.99
+201.34.205.84
+201.34.205.101
+201.34.205.106
+201.34.205.91
+201.34.205.112
+201.34.205.117
+201.34.205.121
+```
+
+OS MESMOS ENDEREÇOS !!! SERÁ QUE ESTAMOS SOFRENDO ATAQUES DE HIJACKING DNS PELOS NOSSOS PRÓPRIOS PROVEDORES ? Seria um acordo entre os provedores e o Governo Federal para nos espionarem?
+
+Bem, durante um tempo esta foi a minha desconfiança.
 
 Baseado nesta notícia:
 
