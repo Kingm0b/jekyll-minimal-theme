@@ -45,7 +45,23 @@ $ geoiplookup 201.34.205.117
 GeoIP Country Edition: BR, Brazil
 ```
 
-**Brazil** ? Vamos ver o que a base whois da AS tem para nos dizer:
+**Brazil** ? Um traceroute:
+
+```
+$ sudo traceroute -In 201.34.205.110
+traceroute to 201.34.205.110 (201.34.205.110), 30 hops max, 60 byte packets
+ 1  192.168.1.1  1.052 ms  1.653 ms  2.239 ms
+ 2  * * *
+ 3  100.120.13.21  33.792 ms  37.883 ms  38.198 ms
+ 4  201.10.55.44  44.327 ms  45.902 ms  48.391 ms
+ 5  100.120.66.1  51.991 ms  59.347 ms 177.2.248.2  57.412 ms
+ 6  100.120.66.109  57.720 ms  58.690 ms  60.922 ms
+ 7  201.34.205.110  62.337 ms  35.071 ms  30.429 ms
+```
+
+Humm... Confirmamos que nosso tráfego não está saindo dos limites do Brasil!
+
+Vamos ver o que a base whois da AS tem para nos dizer:
 
 ```
 $ whois 201.34.205.117
@@ -108,11 +124,7 @@ $ dig a www.google.com @8.8.8.8 +short
 201.34.205.121
 ```
 
-OS MESMOS ENDEREÇOS !!!
-
-SERÁ QUE ESTAMOS SOFRENDO ATAQUES DE **HIJACKING DNS** PELOS NOSSOS PRÓPRIOS PROVEDORES ?
-
-Seria um acordo entre os provedores e o Governo Federal para nos espionarem?
+OS MESMOS ENDEREÇOS !!! SERÁ QUE ESTAMOS SOFRENDO ATAQUES DE HIJACKING DNS PELOS NOSSOS PRÓPRIOS PROVEDORES ? Seria um acordo entre os provedores e o Governo Federal para nos espionarem?
 
 Bem, durante um tempo esta foi a minha desconfiança.
 
