@@ -58,11 +58,17 @@ $ truecrypt --dismount Volume10
 
 Em Maio de 2014 o Truecrypt teve seu desenvolvimento encerrado sob a alegação de não ser um software seguro possuindo falhas de segurança não corrigidas. Em sua página oficial foram disponibilizados tutoriais para substituição do Truecrypt por recursos nativos de encriptação de discos disponibilizado no Windows e OS X.
 
-Em razão dos desenvolvedores não publicarem quais gravíssimas falhas eram estas, a ponto de fazerem desistirem do projeto, muitas especulações surgiram sobre o real motivo do fim do Truecrypt. Algumas pessoas se reuniram para auditar o código fonte e criaram um fork:
-
-[https://truecrypt.ch](https://truecrypt.ch)
-
 Com o fim do Truecrypt, forks já existentes ganharam força, como o VeraCrypt:
 
 [https://veracrypt.codeplex.com](https://veracrypt.codeplex.com)
+
+Em razão dos desenvolvedores não publicarem quais gravíssimas falhas eram estas, a ponto de fazerem desistirem do projeto, muitas especulações surgiram sobre o real motivo do fim do Truecrypt. Algumas pessoas se reuniram para auditar o código fonte e redistribuí-lo:
+
+[https://truecrypt.ch](https://truecrypt.ch)
+
+O pessoal do *Pure Privacy*, de tanto auditar e estudar o código fonte do TrueCrypt, quase um ano depois do seu fim, resolveram escrever seu próprio fork: o **CipherShed**. Link:
+
+[https://www.ciphershed.org/](https://www.ciphershed.org/)
+
+
 
