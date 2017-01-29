@@ -73,5 +73,5 @@ Na perspectiva do dispositivo do usuário (um notebook, smartphone, tablet, rote
 
 Em redes muito grandes, onde o volume de "Access-Request's" são intensos, uma boa prática é utilizar vários servidores em round-robin para balanceamento de carga, ou uma hierarquia de servidores proxys RADIUS para aliviar o(s) servidor(es) principal(is). Veja a imagem: 
 
-[](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/IC195441.gif)
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/IC195441.gif)
 
