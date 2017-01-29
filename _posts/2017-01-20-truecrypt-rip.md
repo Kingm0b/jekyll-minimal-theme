@@ -5,8 +5,6 @@ title: "O finado TrueCrypt"
 
 > Ele morreu, mas continua vivo em nossos corações!
 
-![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-20/imagem11.png)
-
 O Truecrypt é um software para proteção de arquivos de computador contra acesso não autorizado, isolando estes arquivos em contêiners virtuais criptografados por algoritmos de chave simétrica. Estes contêiners (também chamados de volumes) tanto podem ser encontrados no formato de arquivos binários como em partições de um disco. O Truecrypt possui interfaces GUI e CLI.
 
 ![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-20/imagem12.png)
