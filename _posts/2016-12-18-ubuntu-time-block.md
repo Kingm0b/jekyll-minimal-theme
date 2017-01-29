@@ -3,7 +3,7 @@ layout: post
 title: "Bloqueando máquinas Ubuntu pelo horário"
 ---
 
-Objetivo: bloquear máquina de funcionário ás 18:00. Para evitar supresas desagradáveis, alertar o usuário minutos antes do bloqueio da máquina.
+**Objetivo**: bloquear máquina de funcionário ás 18:00. Para evitar supresas desagradáveis, alertar o usuário minutos antes do bloqueio da máquina.
 
 Ferramentas utilizadas:
 
@@ -25,7 +25,7 @@ Configurado seguintes agendamentos em /etc/crontab:
 Configure regra de bloqueio em /etc/security/time.conf:
 
 ```
-lightdm*;*;agr;!Al0759-1800
+lightdm*;*;user;!Al0759-1800
 ```
 
 No arquivo /etc/pam.d/lightdm, insira a seguinte linha:
