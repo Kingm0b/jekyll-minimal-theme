@@ -27,7 +27,7 @@ O algoritmo de chave simétrica utilizado, para encriptar tanto o cabeçalho do 
 
 O processo de encriptação e decriptação dos dados em um volume ocorrem "*on-the-fly*" (de acordo com o próprio slogan do software), isto significa que cada operação de escrita em um volume desencadeia, de forma transparente para o usuário, o processo de encriptação. O mesmo ocorre com as operações de leitura, em que cada bloco do arquivo lido é automaticamente descriptografado.
 
-Uma funcionalidade interessante do Truecrypt é o chamado "*cascateamento de cifras(", em que, por exemplo, caso o usuário tenha escolhido a cifra "AES-Twofish-Serpent" cada bloco dos dados transferidos para o volume primeiro serão encriptados pelo Serpent, seguido pelo Twofish e por último, pelo AES. Caso o dado seja descriptografado, primeiro será decriptado pelo AES, depois pelo Twofish e por último o Serpent.
+Uma funcionalidade interessante do Truecrypt é o chamado "*cascateamento de cifras*", em que, por exemplo, caso o usuário tenha escolhido a cifra "AES-Twofish-Serpent" cada bloco dos dados transferidos para o volume primeiro serão encriptados pelo Serpent, seguido pelo Twofish e por último, pelo AES. Caso o dado seja descriptografado, primeiro será decriptado pelo AES, depois pelo Twofish e por último o Serpent.
 
 Como já foi dito, o Truecrypt também possui uma interface CLI. Segue um exemplo da criação de um volume de 10MB:
 
