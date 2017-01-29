@@ -67,9 +67,11 @@ Basicamente, o NAS requisita autenticação a um servidor RADIUS e o servidor RA
 
 Acontece que nem sempre o NAS é um simples cliente final. Na parte maior dos casos ele é um intermediário entre um dispositivo final e o servidor RADIUS. Como uma imagem vale mais que mil palavras, vejam a seguinte ilustração: 
 
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/radius.fig336.epsi.gif)
 
 Na perspectiva do dispositivo do usuário (um notebook, smartphone, tablet, roteador SOHO, e etc, por exemplo) ele não faz ideia da existência de um servidor RADIUS, o interesse dele é apenas ter a permissão concedida para usufruir da rede (ou outro recurso requisitado). Cabe ao equipamento responsável por liberar acesso ao cliente "tercerizar" a autenticação, repassando as credenciais fornecidas pelo cliente ao servidor RADIUS (utilizando aqui o protocolo RADIUS). O servidor RADIUS, por sua vez, irá aceitar ou rejeitar a autenticação, informando isto ao dispositivo intermediário, que por sua vez irá conceder ou negar acesso ao cliente da maneira como a autenticação foi solicitada (via PPP, 802.1x, HTTP, módulo PAM!!!, que seja).
 
 Em redes muito grandes, onde o volume de "Access-Request's" são intensos, uma boa prática é utilizar vários servidores em round-robin para balanceamento de carga, ou uma hierarquia de servidores proxys RADIUS para aliviar o(s) servidor(es) principal(is). Veja a imagem: 
 
+[](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/IC195441.gif)
 
