@@ -75,3 +75,54 @@ Em redes muito grandes, onde o volume de "Access-Request's" são intensos, uma b
 
 ![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/IC195441.gif)
 
+## Tipos de requisições e AVPs
+
+Para uma melhor compreensão, antes de discutir detalhes sobre coisas como "protocolos de autenticação" e "EAP", vamos nos centrar na maneira como o NAS interaje com o servidor RADIUS, descrevendo os tipos de mensagens RADIUS e seus possíveis atributos.
+
+### Tipos de requisições
+No caso mais simples, o NAS envia ao servidor uma mensagem do tipo "<code>Access-Request</code>" com um determinado ID. Muito provavelmente, no corpo desta mensagem estarão presentes as credenciais do cliente, cabendo ao servidor identificar qual protocolo de autenticação está sendo utilizado (para poder tratar o login e senha corretamente dentro da requisição), para posteriormente comparar as informações das credenciais com sua base de usuários (que pode ser um arquivo de texto, uma base SQL ou LDAP, por exemplo).
+
+![](https://raw.githubusercontent.com/m0blabs/m0blabs.github.io/master/images/2017-01-21/Drawing_RADIUS_1812.svg.png)
+
+ Caso o usuário seja autenticado com sucesso, o servidor responderá ao NAS com uma mensagem do tipo "<code>Access-Accept</code>" com o mesmo ID da requisição. Caso contrário, responderá com um "<code>Access-Reject</code>". Um fato interessante que deve ser levado em consideração, é que nem sempre um "<code>Access-Reject</code>" retornado pelo servidor seja um sinal de login/senha inválido. Ás vezes (principalmente quando se está fazendo os primeiros testes com o FreeRADIUS), o NAS pode estar utilizando um protocolo de autenticação diferente do suportado pelo servidor, por exemplo.
+
+Na prática, a captura de uma autenticação simples seria da seguinte forma:
+
+```
+# tcpdump -nti enp2s0 udp and port 1812
+IP 192.168.1.4.39860 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x27 length: 129
+IP 192.168.1.56.1812 > 192.168.1.4.39860: RADIUS, Access-Accept (2), id: 0x27 length: 84
+```
+
+Caso o protocolo de autenticação suportado pelo servidor seja mais elaborado, somente as informações presentes no "<code>Access-Request</code>" não serão o suficientes. Então, o servidor RADIUS responderá com uma mensagem do tipo "<code>Access-Challenge</code>", informando qual protocolo de autenticação ele suporta e o que ele espera do cliente.
+
+Caso o cliente tenha suporte ao protocolo de autenticação proposto pelo servidor, ele responderá ao servidor com um novo "<code>Access-Request</code>", desta vez, com as informações esperadas por ele. Se vários passos forem necessários para a correta autenticação do usuário, uma série de <code>Access-Request</code>'s e <code>Access-Challenge</code>'s ocorrerão entre o NAS e o servidor RADIUS.
+
+Veja o exemplo da captura de uma autenticação PEAP:
+
+```
+# tcpdump -ntr PEAP.pcap udp and port 1812
+reading from file PEAP.pcap, link-type EN10MB (Ethernet)
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x7d length: 163
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x7d length: 64
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x7e length: 375
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x7e length: 1090
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x7f length: 173
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x7f length: 1086
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x80 length: 173
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x80 length: 382
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x81 length: 311
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x81 length: 123
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x82 length: 173
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x82 length: 101
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x83 length: 247
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x83 length: 117
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x84 length: 295
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x84 length: 149
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x85 length: 247
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Challenge (11), id: 0x85 length: 101
+IP 192.168.1.1.3103 > 192.168.1.56.1812: RADIUS, Access-Request (1), id: 0x86 length: 247
+IP 192.168.1.56.1812 > 192.168.1.1.3103: RADIUS, Access-Accept (2), id: 0x86 length: 165
+```
+
+Observe que até obter um <code>Access-Accept</code> do servidor (a última linha), houve uma troca de **19** mensagens!!! 
