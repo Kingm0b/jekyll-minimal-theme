@@ -49,3 +49,27 @@ Com relação ao FreeRADIUS, me acalmei ao saber duas coisas sobre todos aqueles
 
 * Aquilo são apenas modelos, você não precisa utilizar todos os arquivos de configuração; e
 * Somente uma quantidade pequena de diretivas realmente serão utilizadas;
+
+
+# O protocolo RADIUS
+
+Assim como a grande maioria dos outros protocolos de aplicação, o RADIUS é um protocolo cliente-servidor. O diferencial dele para os demais protocolos é que ele é um **protocolo binário**! Isso quer dizer que ao invés de mensagens contendo comandos e atributos legíveis a humanos, os tipos e atributos das mensagens deste protocolo são identificados por bytes específicos.
+
+**Por exemplo**: mensagens RADIUS tendo como primeiro byte o identificador <code>0x01<code>, indica uma tentativa de autenticação (ou Access-Request como veremos mais a baixo). Caso o primeiro byte seja <code>0x03</code>, trata-se de uma mensagem de acesso rejeitado (ou Access-Reject). Já no corpo de uma mensagem, uma sequência de 2 bytes contendo <code>0x010a</code> é um indicador da presença do nome de usuário com 8 caracteres (provavelmente em um Access-Request).
+
+Apesar da maioria dos protocolos chamarem o cliente de "cliente" e o servidor de "servidor", alguns protocolos diferentões tentam quebrar esse paradigma, como é o caso do SNMP com seu "gerente-agente". Acontece que o RADIUS também é diferentão! E seu cliente é chamado de **NAS**, *não confunda com aquela solução de storage*, a sigla aqui quer dizer: Network Access Server. Daqui pra frente, para qualquer referência a sigla NAS entenda como "cliente RADIUS".
+
+Apesar de também poder rodar sobre TCP, o protocolo RADIUS é amplamente implementado sobre UDP, usando como porta de escuta a **1812** por parte do servidor.
+
+## Arquitetura de uma rede RADIUS
+
+Basicamente, o NAS requisita autenticação a um servidor RADIUS e o servidor RADIUS decide se aceita ou rejeita a tentativa de autenticação. Pronto!
+
+Acontece que nem sempre o NAS é um simples cliente final. Na parte maior dos casos ele é um intermediário entre um dispositivo final e o servidor RADIUS. Como uma imagem vale mais que mil palavras, vejam a seguinte ilustração: 
+
+
+Na perspectiva do dispositivo do usuário (um notebook, smartphone, tablet, roteador SOHO, e etc, por exemplo) ele não faz ideia da existência de um servidor RADIUS, o interesse dele é apenas ter a permissão concedida para usufruir da rede (ou outro recurso requisitado). Cabe ao equipamento responsável por liberar acesso ao cliente "tercerizar" a autenticação, repassando as credenciais fornecidas pelo cliente ao servidor RADIUS (utilizando aqui o protocolo RADIUS). O servidor RADIUS, por sua vez, irá aceitar ou rejeitar a autenticação, informando isto ao dispositivo intermediário, que por sua vez irá conceder ou negar acesso ao cliente da maneira como a autenticação foi solicitada (via PPP, 802.1x, HTTP, módulo PAM!!!, que seja).
+
+Em redes muito grandes, onde o volume de "Access-Request's" são intensos, uma boa prática é utilizar vários servidores em round-robin para balanceamento de carga, ou uma hierarquia de servidores proxys RADIUS para aliviar o(s) servidor(es) principal(is). Veja a imagem: 
+
+
