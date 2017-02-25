@@ -339,7 +339,7 @@ O mais massa de tudo isto é que o backend do GitHub Pages faz uso do Jekyll com
 
 Isto quer dizer que eu não preciso atualizar localmente o blog e upar "manualmente" o _site no GitHub. É só fazer um fork do repositório de algum template, fazer os ajustes necessários e pronto! Você já tem um blog em Jekyll. Para novas publicações, basta upar seus posts em markdown no diretório _posts, automaticamente o "GitHub" irá atualizar o blog para você.
 
-Bem, e aqui se encerra a saga "*em busca da hospedagem perfeita*": GitHub Pages + Jekyll + Jekyll Minimal Theme (com fontes grandes e serifadas). Não sou especialista em nada! Tenho como áreas de interesse redes, Linux/Unix e Segurança da Informação. Com o tempo irei compartilhar muita coisa aqui. Fiquem de olho!
+Bem, e aqui se encerra a saga "*em busca da hospedagem perfeita*": **GitHub Pages + Jekyll + Jekyll Minimal Theme** (com fontes grandes e serifadas). Não sou especialista em nada! Tenho como áreas de interesse redes, Linux/Unix e Segurança da Informação. Com o tempo irei compartilhar muita coisa aqui. Fiquem de olho!
 
 (PS: Sou totalmente aberto a correções. Qualquer explicação equivocada da minha parte, favor entre em contato comigo para eu corrigir... Aprenderemos juntos)
 
