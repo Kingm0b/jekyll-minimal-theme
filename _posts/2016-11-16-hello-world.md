@@ -265,7 +265,7 @@ Options:
 
 De todas estas opções, utilizei <code>--baseurl ""</code>, para dizer ao Web Server builtin do Jekyll que a raiz do servidor é o diretório corrente, e <code>--watch</code>, para fazer com que o Jekyll monitore e tome decisões sobre toda alteração feita em seus arquivos (menos no _config.yml, explico agorinha).
 
-Para postar algo, devo escrever um arquivo de extensão .md ou .markdown e colocá-lo no subdiretório <code>_posts</code>. O nome deste arquivo não pode ser qualquer coisa, ele **deve** ser a data do post em formato americano (YYYY-MM-DD) seguido do nome do futuro arquivo html gerado. Exemplo: 2016-28-12-hello-world.md
+Para postar algo, devo escrever um arquivo de extensão .md ou .markdown e colocá-lo no subdiretório <code>_posts</code>. O nome deste arquivo não pode ser qualquer coisa, ele **deve** ser a data do post no formato YYYY-MM-DD seguido do nome do futuro arquivo html gerado. Exemplo: 2016-28-12-hello-world.md
 
 Duas observações: o Jekyll é bem flexível, tanto o formato da data no nome dos arquivos quanto o nome da extensão são ajustáveis (até mesmo o uso de markdown é ajustável). Estes ajustes são definidos no arquivo **_config.yml** (YML é o equivalente ao Json no universo Ruby rs).
 
