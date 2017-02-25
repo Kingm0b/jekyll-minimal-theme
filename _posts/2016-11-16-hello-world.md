@@ -5,7 +5,7 @@ title: "Indecisões do \"primeiro\" blog"
 
 > Neste post meio "Hello World", detalho minhas indecisões que levaram ao surgimento deste blog.
 
-Desde o início meu objetivo era utilizar a plataforma **Medium**. Já há um bom tempo sou fascinado por essa plataforma por sua maneira elegante e clara de se disponibilizar conteúdo. Alguns links que me chamaram a atenção uns tempos atrás:
+Desde o início meu objetivo era utilizar a plataforma **Medium**. Já a um bom tempo sou fascinado por essa plataforma por sua maneira elegante e clara de se disponibilizar conteúdo. Alguns links que me chamaram a atenção uns tempos atrás:
 
 * [Medium: seu próximo blog](https://medium.com/web-tecnologia/medium-seu-proximo-blog-9ecd110985e1)
 * [Por que a indústria do empreendedorismo de palco irá destruir você.](https://medium.com/o-novo-mercado/porque-a-ind%C3%BAstria-do-empreendedorismo-de-palco-ir%C3%A1-destruir-voc%C3%AA-3e18309ab47f)
@@ -78,7 +78,7 @@ function XPGAffTag() {}
 function XPGBannerDimension() {}
 ```
 
-Declarando estas funções já no início da minha tag <head>, os browsers dão preferência a elas do que as originais, declaradas depois ao fim da tag. Foi aí que passado um tempo, eles descobriram a técnica e começaram a declarar o script deles bem antes, até mesmo, da tag <html>. Apesar de quebrar todo o padrão e a semântica… **XPG Wins**!
+Declarando estas funções já no início da minha tag <head>, os browsers dão preferência a elas do que as originais, declaradas depois ao fim da tag. Foi aí que, passado um tempo, eles descobriram a técnica e começaram a declarar o script deles bem antes, até mesmo, da tag <html>. Apesar de quebrar todo o padrão e a semântica… **XPG Wins**!
 
 ![Google](https://github.com/Kingm0b/kingm0b.github.io/raw/master/images/2016-11-16/html-xpg.png "Source Code")
 _Observem: Tag script entre DOCTYPE e html na linha 2 vs minha tag script na linha 5_
