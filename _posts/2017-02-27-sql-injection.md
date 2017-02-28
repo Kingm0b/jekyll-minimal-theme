@@ -3,7 +3,7 @@ layout: post
 title: "SQL injection for script kiddies"
 ---
 
-> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de "notify"'s. Os sites referenciados já não existem ou tiveram as falhas corrigidas.
+> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de notify's. Os sites referenciados já não existem ou tiveram as falhas corrigidas.
 
 Primeiramente, porque "*injeção de SQL*"?
 
@@ -50,7 +50,7 @@ Só por curiosidade, experimente incrementar o valor passado para a variável id
 - http://www.thailandquitline.or.th/news.php?id=59
 - http://www.thailandquitline.or.th/news.php?id=60
 
-Esses valores são identificadores de dados armazenados no banco. De certa forma, quando você manipula esses valores você está interagindo com o banco de dados do site, uma vez que, a cada valor diferente de ID que você definir gerará uma consulta SELECT diferente pelo arquivo news.php.
+Esses valores são identificadores de dados armazenados no banco. De certa forma, quando você manipula esses valores você está interagindo com o banco de dados do site, uma vez que, a cada valor diferente de ID que você definir gerará uma consulta SELECT diferente pelo script news.php.
 
 Se você acrescentar uma aspa simples junto ao id, você poderá ver uma mensagem de erro retornada:
 
@@ -58,7 +58,7 @@ Se você acrescentar uma aspa simples junto ao id, você poderá ver uma mensage
 http://www.thailandquitline.or.th/news.php?id=60'
 ```
 
-Isso aconteceu porque a consulta feita pelo news.php para o banco de dados foi 'corrompida'. Uma vez que o número passado para a variável id continha um código SQL (o aspa ' ). Isso é um bom sinal. Indo mais além olhe isto, jovem:
+Isso aconteceu porque a consulta feita pelo news.php para o banco de dados foi 'corrompida'. Uma vez que o número passado para a variável id continha um código SQL (o aspa ' ). Isso é um bom sinal. Indo mais além olhe isto:
 
 ```
 http://www.thailandquitline.or.th/news.php?id=-58 union all select concat(username,0x3a,password),2,3,4 from admin--
@@ -73,15 +73,14 @@ Senha: systemadmin
 
 Ciente de que existe um padrão na exploração de SQL injection (detecção do SGBD usado, enumeração de tabelas, busca por campos de tabela de usuarios para extração de login e senha e etc), alguns especialistas no assunto desenvolveram ferramentas que automatizam isto, como é o caso do Havij e do SQLMAP:
 
-http://itsecteam.com/products/havij-advanced-sql-injection/
+- http://itsecteam.com/products/havij-advanced-sql-injection/
+- http://sqlmap.org/
 
-http://sqlmap.org/
-
-Uma coisa que você tinha me perguntado: como encontrar sites vulneráveis á SQLi ?
+#### Como encontrar sites vulneráveis á SQLi ?
 
 A resposta: GOOGLE
 
-Os sites que postei aqui nesse email foram encontrados por ele. Eu me utilizei de recursos avançados do Google para pesquisas mais específicas.
+Os sites que postei aqui nesse post foram encontrados por ele. Eu me utilizei de recursos avançados do Google para pesquisas mais específicas.
 
 Help: https://support.google.com/websearch/answer/2466433?hl=pt-BR
 
@@ -97,6 +96,8 @@ e que tenha seu domínio .th (Tailândia):
 ```
 inurl:news.php?id= +site:th
 ```
+
+#### Outros cenários
 
 Ao contrário do que se pensam, SQL Injection não se limita apenas a sistemas WEB, vide o caso desta vulnerabilidade:
 
