@@ -104,7 +104,7 @@ Desvantagens:
 - A ferramenta md5sum (e suas variantes sha256sum, sha512sum ...) não faz checksum de diretórios e metadados dos arquivos (ex.: Não detecta alteração nos timestamps MAC de um arquivo e nem alterações em permissões).
 - Caso o sistema seja comprometido, o comando md5sum e /root/database poderão ser alterados.
 
-Utilizando o Tripwire
+### Utilizando o Tripwire
 
 Instalação:
 
@@ -128,14 +128,14 @@ Localização dos executáveis:
 - /usr/sbin/siggen
 
 Arquivos de configuração:
-/etc/tripwire
-/etc/tripwire/twpol.txt
-/etc/tripwire/twcfg.txt
+- /etc/tripwire
+- /etc/tripwire/twpol.txt
+- /etc/tripwire/twcfg.txt
 
 Base de dados:
-/var/lib/tripwire
-/var/lib/$(HOSTNAME).twd - Base de dados contendo a relação de arquivos e seus respectivos hashes.
-/var/lib/tripwire/report/$(HOSTNAME)-$(DATE).twr
+- /var/lib/tripwire
+- /var/lib/$(HOSTNAME).twd - Base de dados contendo a relação de arquivos e seus respectivos hashes.
+- /var/lib/tripwire/report/$(HOSTNAME)-$(DATE).twr
 
 
 Configuração do Tripwire:
@@ -205,7 +205,7 @@ twprint --print-report --twrfile /var/lib/tripwire/report/Tripwire-20150606-1455
 ```
 
 
-Escrevendo políticas do Tripwire:
+### Escrevendo políticas do Tripwire:
 
 Por padrão, o Tripwire inclui no pacote um twpol.txt com regras pré-definidas. Acontece que estas políticas podem não estar de acordo com as necessidades do host a ser protegido (existem muitos arquivos e diretórios referenciados que podem não estar presentes no seu sistema). O ideal seria criar do zero novas regras (um novo twpol.txt), e para isto devemos entender como são escritas as regras para o TripWire.
 
@@ -297,12 +297,12 @@ Lembrando que estas novas regras deverão ser definidas em um novo twpol.txt, en
 A saída dos reports possuem este cabeçalho:
 
 ```
----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
   Section: Unix File System
----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
-  Rule Name                       Severity Level    Added    Removed    Modified
-  --------------                      ------------------   -----------   -------------  -----------
+ Rule Name           Severity Level        Added      Removed    Modified
+-----------         ------------------   ---------   ---------  -----------
 ```
 
 "Rule Name": Nome da regra. Por padrão, o nome da regra é o nome do arquivo/diretório monitorado. Podemos alterar isto por nomes mais sugestivos á administração.
