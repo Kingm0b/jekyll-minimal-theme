@@ -5,15 +5,18 @@ title: "Detecção de intrusão em hosts com o Tripwire"
 
 > Neste post, vamos discutir métodos para detecção de possíveis alterações no sistema em decorrência da ação de algum malware/atacante em sitemas Linux.
 
-Objetivos:
+## Introdução
+
 Serão abordados de medidas básicas até soluções mais elaboradas para este tipo de detecção de intrusões por checagem de integridade de arquivos.
 
-Detecção por enumeração de arquivos recentemente alterados:
-Utilizando a ferramenta find.
+## Detecção por enumeração de arquivos recentemente alterados
+
+### Utilizando a ferramenta find.
 
 Podemos fazer esta detecção baseando-se na data de alteração/criação de um arquivo teste.
 
 Criando o arquivo:
+
 ```
 # touch /tmp/teste.txt
 ```
@@ -43,8 +46,9 @@ Desvantagens:
 - O atacante pode facilmente alterar o horário de criação/modificação do arquivo com o comando touch, despistando sua atuação.
 - Indo mais além, ele poderia verificar o horário de criação/modificação de um arquivo antes de alterá-lo e definir a data como estava anteriormente após a alteração.
 
-Detecção por teste de integridade de arquivos utilizando algoritmos de hash
-Ferramenta utilizada: md5sum
+## Detecção por teste de integridade de arquivos utilizando algoritmos de hash
+
+### Ferramenta utilizada: md5sum
 
 Primeiro criaremos nossa base contendo uma lista de arquivos e seus respectivos hashes:
 
@@ -531,7 +535,7 @@ As checagens poderão ocorrer individualmente:
 
 * O que está contido em **site.key** e **local.key**?
 
-R: Um par de chaves criptográficas: uma pública e outra privada, geradas pelo algoritmo ELGAMAL e compressadas pelo algoritmo Lempel-Ziv 1977 implementada pela biblioteca zLib.
+Um par de chaves criptográficas: uma pública e outra privada, geradas pelo algoritmo ELGAMAL e compressadas pelo algoritmo Lempel-Ziv 1977 implementada pela biblioteca zLib.
 
 * Qual a diferença entre o **site.key** e o **local.key**?
 
