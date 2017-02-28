@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SQL for script kiddies"
+title: "SQL injection for script kiddies"
 ---
 
 > Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de "notify". Os sites referenciados já não existem ou tiveram as falhas corrigidas.
