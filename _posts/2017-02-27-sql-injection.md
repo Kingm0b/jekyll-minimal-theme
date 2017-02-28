@@ -7,6 +7,8 @@ title: "SQL injection for script kiddies"
 
 Primeiramente, porque "*injeção de SQL*"?
 
+Genericamente, "*injection flaws*" são falhas de segurança causadas pela má validação dos dados fornecidos pelo usuário. O SQL injection é mais um de uma família de falhas de injeção, exemplos: command injection, HTML injection, LDAP injection, PHP injection, XML injection... e por aí vai.
+
 Na maioria das vezes, quando se tem uma aplicação (seja desktop, mobile ou Web) interagindo com um banco de dados, o usuário não precisa em nenhum momento se preocupar em COMO essa aplicação está lidando com o banco (e nem precisa saber que há um banco de dados ali).
 
 A ideia de se "injetar SQL" é o ato de fornecer fragmentos (ou até mesmo QUERYs completas) de código SQL na aplicação vulnerável, de modo com que uma autenticação ou uma simples consulta ao banco seja maliciosamente modificada. Portanto, SQL Injection não é falha no SGBD, mas sim na APLICAÇÃO que se utiliza do SGDB.
@@ -298,5 +300,13 @@ Login: admin
 Hash da senha em MD5: 0192023a7bbd73250516f069df18b500
 Hash quebrado: admin123
 ```
+
+#### Finalizando
+
+Apesar do SQLi ser considerado uma falha de segurança antiga, já muito conhecida pelos desenvolvedores e eliminada pelo principais frameworks de desenvolvimento Web, ainda é muito comum encontrar sistemas vulneráveis a ela. O agravante acontece com o uso de plugins vulneráveis para CMS, exemplos:
+
+https://www.exploit-db.com/webapps/
+
+O que nos leva a concluir que o SQL injection continua sendo um grande risco e a falha preferida dos defacers.
 
 EOF
