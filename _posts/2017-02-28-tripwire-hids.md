@@ -7,7 +7,7 @@ title: "Detecção de intrusão em hosts com o Tripwire"
 
 ## Introdução
 
-Serão abordados de medidas básicas até soluções mais elaboradas para este tipo de detecção de intrusões por checagem de integridade de arquivos.
+Serão abordados de medidas básicas até soluções mais elaboradas para este tipo de detecção de intrusão por checagem de integridade de arquivos.
 
 
 
@@ -176,7 +176,8 @@ twadmin --create-cfgfile --cfgfile tw.cfg --site-keyfile site.key twcfg.txt
 twadmin --create-polfile --cfgfile tw.cfg --polfile tw.pol --site-keyfile site.key twpol.txt
 ```
 
-Interagindo com as ferramentas do TripWire
+
+#### Interagindo com as ferramentas do TripWire
 
 Visualizando conteúdo de tw.cfg:
 
