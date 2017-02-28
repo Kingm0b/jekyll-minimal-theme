@@ -9,6 +9,8 @@ title: "Detecção de intrusão em hosts com o Tripwire"
 
 Serão abordados de medidas básicas até soluções mais elaboradas para este tipo de detecção de intrusões por checagem de integridade de arquivos.
 
+
+
 ## Detecção por enumeração de arquivos recentemente alterados
 
 #### Utilizando a ferramenta find.
@@ -45,6 +47,8 @@ Desvantagens:
 - Não garante detecção por modificação do arquivo, apenas informações MAC presentes no inode do mesmo.
 - O atacante pode facilmente alterar o horário de criação/modificação do arquivo com o comando touch, despistando sua atuação.
 - Indo mais além, ele poderia verificar o horário de criação/modificação de um arquivo antes de alterá-lo e definir a data como estava anteriormente após a alteração.
+
+
 
 ## Detecção por teste de integridade de arquivos utilizando algoritmos de hash
 
@@ -108,6 +112,8 @@ Desvantagens:
 - A ferramenta md5sum (e suas variantes sha256sum, sha512sum ...) não faz checksum de diretórios e metadados dos arquivos (ex.: Não detecta alteração nos timestamps MAC de um arquivo e nem alterações em permissões).
 - Caso o sistema seja comprometido, o comando md5sum e /root/database poderão ser alterados.
 
+
+
 ### Utilizando o Tripwire
 
 Instalação:
@@ -142,7 +148,7 @@ Base de dados:
 - /var/lib/tripwire/report/$(HOSTNAME)-$(DATE).twr
 
 
-Configuração do Tripwire:
+#### Configuração do Tripwire:
 
 Criando as chaves
 ﻿﻿
@@ -209,7 +215,7 @@ twprint --print-report --twrfile /var/lib/tripwire/report/Tripwire-20150606-1455
 ```
 
 
-### Escrevendo políticas do Tripwire:
+#### Escrevendo políticas do Tripwire:
 
 Por padrão, o Tripwire inclui no pacote um twpol.txt com regras pré-definidas. Acontece que estas políticas podem não estar de acordo com as necessidades do host a ser protegido (existem muitos arquivos e diretórios referenciados que podem não estar presentes no seu sistema). O ideal seria criar do zero novas regras (um novo twpol.txt), e para isto devemos entender como são escritas as regras para o TripWire.
 
@@ -399,7 +405,7 @@ As regras suportam o operador de negação para especificar objetos (arquivos ou
 }
 ```
 
-### Diretivas
+#### Diretivas
 
 O Tripwire suporta com o conceito de "diretivas". O propósito desta funcionalidade é permitir debug de políticas e aplicação condicional das regras. Segundo a documentação, o principal objetivo das "diretivas" do Tripwire é o compartilhamento de políticas para diversas máquinas, ou seja, posso ter vários servidores utilizando o mesmo tw.pol, por exemplo, mesmo possuindo arquivos e hierarquia de diretórios diferentes.
 
@@ -425,7 +431,7 @@ As seções default são as seguintes:
 ```
 
 
-### Monitoramento seletivo com Tripwire
+#### Monitoramento seletivo com Tripwire
 
 
 Não é possível realizar checagens em regras específicas das políticas do Tripwire individualmente, ou você checa todas a regras de um determinado arquivo de políticas ou não realiza nenhuma checagem ;)
@@ -566,7 +572,8 @@ Em /var/lib/tripwire/HOSTNAME.twd
 O Tripwire não só monitora alterações nos arquivos em si, como também em seus metadados, ex.: alterações em permissões e em datas de acesso são detectadas.
 
 
-Links:
+
+#### Referências:
 
 http://linux.die.net/man/8/twintro
 
