@@ -11,7 +11,7 @@ Serão abordados de medidas básicas até soluções mais elaboradas para este t
 
 ## Detecção por enumeração de arquivos recentemente alterados
 
-### Utilizando a ferramenta find.
+#### Utilizando a ferramenta find.
 
 Podemos fazer esta detecção baseando-se na data de alteração/criação de um arquivo teste.
 
@@ -48,7 +48,7 @@ Desvantagens:
 
 ## Detecção por teste de integridade de arquivos utilizando algoritmos de hash
 
-### Ferramenta utilizada: md5sum
+#### Ferramenta utilizada: md5sum
 
 Primeiro criaremos nossa base contendo uma lista de arquivos e seus respectivos hashes:
 
