@@ -103,7 +103,7 @@ Ao contrário do que se pensam, SQL Injection não se limita apenas a sistemas W
 
 http://www.securityfocus.com/bid/33722/exploit
 
-No caso desta falha, que seria interessante ser citada na apresentação, um serviço de FTP chamado "Proftpd" possui um módulo que permite autenticação do serviço de FTP com usuários cadastrados em um banco de dados MySQL. O interessante é que este módulo não fazia validação dos dados de entrada, permitindo que um atacante pudesse injetar strings SQL como nome de usuário, assim:
+No caso desta falha, um serviço de FTP chamado "Proftpd" possui um módulo que permite autenticação do serviço de FTP com usuários cadastrados em um banco de dados MySQL. O interessante é que este módulo não fazia validação dos dados de entrada, permitindo que um atacante pudesse injetar strings SQL como nome de usuário, assim:
 
 ```
 username: %') and 1=2 union select 1,1,uid,gid,homedir,shell from users; --
@@ -112,9 +112,9 @@ password: 1
 
 E com isso ele conseguia rodar comandos no FTP server sem conhecer nenhum login nem senha.
 
-Olha esse vídeo nos 4:20 demonstrando a utilização de um exploit que explora essa falha:
+Aos 4:20 deste vídeo, é demonstrado a utilização de um exploit que explora essa falha:
 
-https://www.youtube.com/watch?v=s5EtYRiMf_o
+https://youtu.be/s5EtYRiMf_o?t=260
 
 
 Em uma simples análise do exploit utilizado no vídeo:
@@ -144,9 +144,15 @@ print "\n[*] Connected To $host";
 
 #### Usando o SQLMap
 
-Link para Download: https://codeload.github.com/sqlmapproject/sqlmap/legacy.tar.gz/master
+Link para Download: 
 
-Você fará o download de um arquivo com esse nome: sqlmapproject-sqlmap-0.9-4059-ge35c7fb.tar.gz
+https://codeload.github.com/sqlmapproject/sqlmap/legacy.tar.gz/master
+
+Você fará o download de um arquivo com esse nome: 
+
+```
+sqlmapproject-sqlmap-0.9-4059-ge35c7fb.tar.gz
+```
 
 Descompactando:
 
