@@ -46,7 +46,7 @@ Desvantagens:
 Detecção por teste de integridade de arquivos utilizando algoritmos de hash
 Ferramenta utilizada: md5sum
 
-Primeiro criaremos nossa base contendo uma lista arquivos e seus respectivos hashes:
+Primeiro criaremos nossa base contendo uma lista de arquivos e seus respectivos hashes:
 
 ```
 # md5sum /etc/passwd /etc/shadow /root/arquivos/* > /root/database
@@ -327,17 +327,17 @@ Podemos adicionar nomes e severidade nas regras da seguinte forma, exemplo de tw
 Como resultado, teremos algo como isto nos reports da checagem:
 
 ```
------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
   Section: Unix File System
------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
-  Rule Name                                Severity Level    Added    Removed  Modified
-  ---------                                      ------------------   ----------  -------------  --------
-  Arquivos da Empresa            50                         0              0                   0        
+  Rule Name                  Severity Level    Added    Removed    Modified
+  ---------                 ----------------   ------  ---------  ---------
+  Arquivos da Empresa        50                0        0          0        
   (/root/arquivos)
-* Temporarios                          10                          0              0                   1        
+* Temporarios                10                0        0          1        
   (/tmp)
-  Arquivos do Sistema               100                       0              0                    0        
+  Arquivos do Sistema        100               0        0          0        
   (/etc/passwd)
 
 Total objects scanned:  17
