@@ -3,18 +3,19 @@ layout: post
 title: "SQL for script kiddies"
 ---
 
-Primeiramente, porque "injeção de SQL"?
+> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de "notify". Os sites referenciados já não existem ou tiveram as falhas corrigidas.
 
-Na maioria das vezes quando se tem uma aplicação (seja desktop, mobile ou Web) interagindo com um banco de dados, o usuário não precisa em nenhum momento se preocupar em COMO essa aplicação está lidando com o banco (e nem precisa saber que há um banco de dados ali). A ideia de se "injetar SQL" é o ato de fornecer fragmentos (ou até mesmo QUERYs completas) de código SQL na aplicação vulnerável, de modo com que uma autenticação ou uma simples consulta ao banco seja maliciosamente modificada;
+Primeiramente, porque "*injeção de SQL*"?
 
-SQL Injection não é falha no SGBD, mas sim na APLICAÇÃO que se utiliza do SGDB;
+Na maioria das vezes quando se tem uma aplicação (seja desktop, mobile ou Web) interagindo com um banco de dados, o usuário não precisa em nenhum momento se preocupar em COMO essa aplicação está lidando com o banco (e nem precisa saber que há um banco de dados ali).
 
+A ideia de se "injetar SQL" é o ato de fornecer fragmentos (ou até mesmo QUERYs completas) de código SQL na aplicação vulnerável, de modo com que uma autenticação ou uma simples consulta ao banco seja maliciosamente modificada. Portanto, SQL Injection não é falha no SGBD, mas sim na APLICAÇÃO que se utiliza do SGDB.
 
 A forma como o código SQL será escrito no processo de injeção vai depender do SGBD utilizado pelo sistema-vítima. Ex: MySQL Injection, PostgresSQL Injection, MSSQLi... ;
 
 Basicamente, um ataque de SQL Injection em um sistema WEB pode ser realizado de duas maneiras diferentes:
 
-- SQLi Básico: no formulário de login é injetado uma string SQL com o objetivo de burlar a autenticação. Exemplo de site vulnerável da Tailândia:
+**SQLi Básico**: no formulário de login é injetado uma string SQL com o objetivo de burlar a autenticação. Exemplo de site vulnerável da Tailândia:
 
 http://www.kdy.ac.th/admin/login.php
      
@@ -34,11 +35,11 @@ Exemplos de outros sites:
 - http://www.pisini.it/soft/admin/login.php (Site da Itália)
 - http://ilgroglio.it/admin/
 
-- SQLi Avançado: nesse caso, a injeção acontecerá diretamente na URL do site por requisição GET (em situações mais convencionais, mas existe também a possibilidade de se atacar por meio de POST - porque não?). O diferencial deste ataque com relação ao anterior é que você irá interagir com o banco de dados até conseguir o login e a senha armazenado nele.
+**SQLi Avançado**: nesse caso, a injeção acontecerá diretamente na URL do site por requisição GET (em situações mais convencionais, mas existe também a possibilidade de se atacar por meio de POST - porque não?). O diferencial deste ataque com relação ao anterior é que você irá interagir com o banco de dados até conseguir o login e a senha armazenado nele.
 
 Exemplo, olha esse site da Tailândia: http://www.thailandquitline.or.th/news.php?id=58
 
-Legal né?
+Legal, né?
 
 Só por curiosidade, experimente incrementar o valor passado para a variável id:
 
@@ -67,6 +68,7 @@ Senha: systemadmin
 Ciente de que existe um padrão na exploração de SQL injection (detecção do SGBD usado, enumeração de tabelas, busca por campos de tabela de usuarios para extração de login e senha e etc), alguns especialistas no assunto desenvolveram ferramentas que automatizam isto, como é o caso do Havij e do SQLMAP:
 
 http://itsecteam.com/products/havij-advanced-sql-injection/
+
 http://sqlmap.org/
 
 Uma coisa que você tinha me perguntado: como encontrar sites vulneráveis á SQLi ?
@@ -191,9 +193,9 @@ $ python sqlmap.py -u http://www.thailandquitline.or.th/news.php?id=1 --current-
 Ele vai te retornar algo como isto:
 
 ```
-     web application technology: Apache 2, PHP 5.2.17
-     back-end DBMS: MySQL 5.0.11
-     current database:    'admin_nd'
+web application technology: Apache 2, PHP 5.2.17
+back-end DBMS: MySQL 5.0.11
+current database:    'admin_nd'
 ```
 
 Vamos agora enumerar as tabelas do banco admin_nd:
@@ -264,7 +266,9 @@ Table: admin
 Experimente fazer esses procedimentos com esses sites:
 
 http://camping-boomerang.ch/en/news.php?ID=91
+
 http://www.audio-prestige.ch/news/news.php?id=100
+
 http://www.mediations.ch/cms/news.php?id=10
 
 
