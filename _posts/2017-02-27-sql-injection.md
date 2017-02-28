@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SQL for script kiddies"
+title: "SQL Injection for script kiddies"
 ---
 
 Primeiramente, porque "injeção de SQL"?
