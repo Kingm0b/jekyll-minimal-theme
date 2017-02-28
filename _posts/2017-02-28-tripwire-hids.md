@@ -407,17 +407,18 @@ A sintaxe de uma diretiva é como se segue:
 
 As seções default são as seguintes:
 
-@@section   # Declara uma seção, na maioria das vezes haverá uma seção GLOBAL e/ou uma FS.  Uma seção GLOBAL é utilizada apenas para declarar variáveis que poderão ser reaproveitadas em outros arquivos de política. Uma seção FS define toda a área do arquivo de políticas onde serão encontradas definição de máscaras, variáveis e regras que afetem sistemas de arquivos UNIX. Em sistemas Windows esta seção será referenciada como @@section NTFS.
+```
+@@section	# Declara uma seção, na maioria das vezes haverá uma seção GLOBAL e/ou uma FS.  Uma seção GLOBAL é utilizada apenas para declarar variáveis que poderão ser reaproveitadas em outros arquivos de política. Uma seção FS define toda a área do arquivo de políticas onde serão encontradas definição de máscaras, variáveis e regras que afetem sistemas de arquivos UNIX. Em sistemas Windows esta seção será referenciada como @@section NTFS.
 
-@@ifhost     # Permite uma aplicação condicional
-@@else        # de uma regra.
+@@ifhost	# Permite uma aplicação condicional
+@@else		# de uma regra.
 @@endif
 
-@@print    # Imprime uma mensagem
-@@error   # Imprime uma mensagem de erro
+@@print		# Imprime uma mensagem
+@@error		# Imprime uma mensagem de erro
 
-@@end     # Marks the logical end-of-file.
-
+@@end		# Marks the logical end-of-file.
+```
 
 
 ### Monitoramento seletivo com Tripwire
@@ -526,52 +527,78 @@ As checagens poderão ocorrer individualmente:
 
 
 
-**F**NM**AQ** (Frequently *Not Much* Asked Questions):
+### **F**NM**AQ** (Frequently *Not Much* Asked Questions):
 
-1 - O que está contido em site.key e local.key?
+* O que está contido em **site.key** e **local.key**?
+
 R: Um par de chaves criptográficas: uma pública e outra privada, geradas pelo algoritmo ELGAMAL e compressadas pelo algoritmo Lempel-Ziv 1977 implementada pela biblioteca zLib.
 
-2 - Qual a diferença entre o site.key e o local.key?
-R: O site.key é utilizado para assinar os arquivos de configuração do Tripwire (ex.: tw.cfg e tw.pol) e o local.key é usado para assinar o banco de dados de arquivos monitorados (/var/lib/HOSTNAME.twd) e os reports (/var/lib/reports/*).
+* Qual a diferença entre o **site.key** e o **local.key**?
 
-3 - Porque o Tripwire utiliza dois pares de chaves?
-R: A ideia do site.key é ser utilizada em várias instalações diferentes do Tripwire (em hosts diferentes utilizar o mesmo par de chaves site.key). E o local.key deverá ser utilizado apenas localmente por um único host (isto explica porque da necessidade do nome do arquivo contiver o hostname da máquina).
+O site.key é utilizado para assinar os arquivos de configuração do Tripwire (ex.: tw.cfg e tw.pol) e o local.key é usado para assinar o banco de dados de arquivos monitorados (/var/lib/HOSTNAME.twd) e os reports (/var/lib/reports/*).
 
-4 - Como é feito a assinatura digital dos arquivos?
-R: Utilizando o conceito convencional de assinatura mesmo. O diferencial é que a chave privada fica comprensada junto com a pública em um único arquivo e extraída quando necessária sua utilização.
+* Porque o Tripwire utiliza dois pares de chaves?
 
-5 - Porque temos as versões binárias de twcfg.txt e twpol.txt ?
-R: Isto evita, caso o sistema estiver sido comprometido, que o atacante possa alterar os caminhos absolutos dos componentes do Tripwire (no caso do tw.cfg) e também evita que as políticas de verificação do mesmo sejam maliciosamente alteradas com o objetivo de acobertar alterações do atacante/malware (no caso do tw.pol). Estes arquivos, além de estarem no formato binário, são assinados digitalmente pela chave privada de site.key.
+A ideia do site.key é ser utilizada em várias instalações diferentes do Tripwire (em hosts diferentes utilizar o mesmo par de chaves site.key). E o local.key deverá ser utilizado apenas localmente por um único host (isto explica porque da necessidade do nome do arquivo contiver o hostname da máquina).
 
-6 - Porque ao gerar a database pela primeira vez temos que informar a senha do local.key?
-R: Porque o arquivo .twd gerado deverá ser assinado pela chave privada de local.key.
+* Como é feito a assinatura digital dos arquivos?
 
-7 - Onde está armazenado a lista de arquivos monitorados e seus respectivos hashes?
-R: Em /var/lib/tripwire/HOSTNAME.twd
+Utilizando o conceito convencional de assinatura mesmo. O diferencial é que a chave privada fica comprensada junto com a pública em um único arquivo e extraída quando necessária sua utilização.
 
-8 - O Tripwire também monitora inodes? Ou apenas os arquivos em si?
-R: O Tripwire não só monitora alterações nos arquivos em si, como também em seus metadados, ex.: alterações em permissões e em datas de acesso são detectadas.
+* Porque temos as versões binárias de twcfg.txt e twpol.txt ?
+
+Isto evita, caso o sistema estiver sido comprometido, que o atacante possa alterar os caminhos absolutos dos componentes do Tripwire (no caso do tw.cfg) e também evita que as políticas de verificação do mesmo sejam maliciosamente alteradas com o objetivo de acobertar alterações do atacante/malware (no caso do tw.pol). Estes arquivos, além de estarem no formato binário, são assinados digitalmente pela chave privada de site.key.
+
+* Porque ao gerar a database pela primeira vez temos que informar a senha do local.key?
+
+Porque o arquivo .twd gerado deverá ser assinado pela chave privada de local.key.
+
+* Onde está armazenado a lista de arquivos monitorados e seus respectivos hashes?
+
+Em /var/lib/tripwire/HOSTNAME.twd
+
+* O Tripwire também monitora inodes? Ou apenas os arquivos em si?
+
+O Tripwire não só monitora alterações nos arquivos em si, como também em seus metadados, ex.: alterações em permissões e em datas de acesso são detectadas.
 
 
 Links:
 
 http://linux.die.net/man/8/twintro
+
 http://linux.die.net/man/4/twpolicy
+
 http://manpages.ubuntu.com/manpages/hardy/man5/twfiles.5.html
+
 http://linux.die.net/man/8/twadmin
+
 http://www.tripwire.com/
+
 http://www.tripwire.org/
+
 http://www.linux-community.de/Internal/Artikel/Print-Artikel/LinuxUser/2013/02/Einbrueche-erkennen-mit-dem-IDS-Tripwire/%28article_body_offset%29/2
+
 https://www.digitalocean.com/community/tutorials/how-to-use-tripwire-to-detect-server-intrusions-on-an-ubuntu-vps
+
 http://www.linux-magazine.com/Online/Features/Detecting-Attackers-with-Tripwire
+
 http://www.linuxsecurity.com.br/article.php?sid=306
+
 http://www.vivaolinux.com.br/artigo/Tripwire-Checando-a-integridade-do-sistema
+
 http://adrenaline.uol.com.br/forum/area-linux-e-open-source/245637-tripwire-em-linux.html
+
 http://www.lsi.usp.br/~volnys/courses/presentations/LinuxSecurity/LinuxSecurity-colorida.PDF
+
 http://www.labbas.eng.uerj.br/links/linux/pg101.html
+
 http://189-90-102-190.life.com.br/article.php?sid=1253
+
 http://manpages.ubuntu.com/manpages/saucy/man5/twfiles.5.html
+
 https://www.safaribooksonline.com/library/view/linux-security-cookbook/0596003919/ch01s01.html
+
 http://www.linuxjournal.com/article/8758?page=0,1
+
 http://erikimh.com/tripwire/
 
