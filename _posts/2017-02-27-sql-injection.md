@@ -5,7 +5,7 @@ title: "SQL injection for script kiddies"
 
 > Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de notify's. Os sites referenciados já não existem ou tiveram as falhas corrigidas (ou estão usando WAF para impedir a exploração).
 
-Primeiramente, porque "*injeção de SQL*"?
+Antes de mais nada: Porque "*injeção de SQL*"?
 
 Genericamente, "*injection flaws*" são falhas de segurança causadas pela má validação dos dados fornecidos pelo usuário. O SQL injection é mais um de uma família de falhas de injeção, exemplos: command injection, HTML injection, LDAP injection, PHP injection, XML injection... e por aí vai.
 
@@ -116,7 +116,7 @@ E com isso ele conseguia rodar comandos no FTP server sem conhecer nenhum login 
 
 Aos 4:20 deste vídeo, é demonstrado a utilização de um exploit que explora essa falha:
 
-https://youtu.be/s5EtYRiMf_o?t=260
+<iframe width="854" height="480" src="https://www.youtube.com/embed/s5EtYRiMf_o?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 
 Em uma simples análise do exploit utilizado no vídeo:
