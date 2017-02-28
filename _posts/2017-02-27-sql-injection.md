@@ -3,7 +3,7 @@ layout: post
 title: "SQL injection for script kiddies"
 ---
 
-> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de notify's. Os sites referenciados já não existem ou tiveram as falhas corrigidas.
+> Estas anotações foram realizadas alguns anos atrás. O objetivo aqui é detalhar, de forma superficial, os procedimentos utilizados pela grande maioria dos defacers que lotam o Zone-H de notify's. Os sites referenciados já não existem ou tiveram as falhas corrigidas (ou estão usando WAF para impedir a exploração).
 
 Primeiramente, porque "*injeção de SQL*"?
 
