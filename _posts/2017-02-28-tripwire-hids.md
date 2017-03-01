@@ -5,13 +5,13 @@ title: "Detecção de intrusão em hosts com o Tripwire"
 
 > Neste post, vamos discutir métodos para detecção de possíveis alterações no sistema em decorrência da ação de algum malware/atacante em sitemas Linux.
 
-## Introdução
+#### Introdução
 
 Serão abordados de medidas básicas até soluções mais elaboradas para este tipo de detecção de intrusão por checagem de integridade de arquivos.
 
 
 
-## Detecção por enumeração de arquivos recentemente alterados
+#### Detecção por enumeração de arquivos recentemente alterados
 
 #### Utilizando a ferramenta find.
 
@@ -50,7 +50,7 @@ Desvantagens:
 
 
 
-## Detecção por teste de integridade de arquivos utilizando algoritmos de hash
+#### Detecção por teste de integridade de arquivos utilizando algoritmos de hash
 
 #### Ferramenta utilizada: md5sum
 
@@ -114,7 +114,7 @@ Desvantagens:
 
 
 
-### Utilizando o Tripwire
+#### Utilizando o Tripwire
 
 Instalação:
 
@@ -148,9 +148,11 @@ Base de dados:
 - /var/lib/tripwire/report/$(HOSTNAME)-$(DATE).twr
 
 
+
+
 #### Configuração do Tripwire:
 
-Criando as chaves
+Criando as chaves:
 ﻿﻿
 1 - Chave para assinatura dos arquivos de configuração do Tripwire:
 
@@ -175,6 +177,8 @@ twadmin --create-cfgfile --cfgfile tw.cfg --site-keyfile site.key twcfg.txt
 ```
 twadmin --create-polfile --cfgfile tw.cfg --polfile tw.pol --site-keyfile site.key twpol.txt
 ```
+
+
 
 
 #### Interagindo com as ferramentas do TripWire
@@ -214,6 +218,8 @@ Visualizando conteúdo de algum report:
 ```
 twprint --print-report --twrfile /var/lib/tripwire/report/Tripwire-20150606-145524.twr
 ```
+
+
 
 
 #### Escrevendo políticas do Tripwire:
@@ -538,7 +544,7 @@ As checagens poderão ocorrer individualmente:
 
 
 
-### **F**NM**AQ** (Frequently *Not Much* Asked Questions):
+#### **F**NM**AQ** (Frequently *Not Much* Asked Questions):
 
 * O que está contido em **site.key** e **local.key**?
 
